@@ -47,6 +47,7 @@ async function deletedb(product) {
         let isPresent = false;
         const filterdocs = await client.db("ItemsList").collection("products").find({ "product": product["product"] }).toArray();
         if (filterdocs.length > 0) {
+            console.log("Present in database")
             isPresent = true
             await client.db("ItemsList").collection("products").deleteOne({ "product": product["product"] })
             return isPresent

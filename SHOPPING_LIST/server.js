@@ -15,6 +15,6 @@ app.use(cors());
 
 //Any request at /api/items will be reffered to the items variable
 app.use('/api/items', items)
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("Server started")
 })

@@ -15,10 +15,10 @@ routes.post('/', (req, res) => {
     console.log("POST REQUEST")
     createdb(req.body).then(result => {
         if (result === true) {
-            res.send("Item already exist in the Database")
+            res.send(`${req.body.product} already exist in the Database`)
         }
         else {
-            res.send("New Item added to the Database")
+            res.send(`${req.body.product} added to the Database`)
         }
     })
 })
