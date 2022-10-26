@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Badge from 'react-bootstrap/Badge';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 const api = axios.create({
@@ -13,6 +15,7 @@ const api = axios.create({
 
 function ItemsForm() {
     const [item, setItem] = useState("")
+    const [variantstyle, setVariantStyle] = useState("")
     const [itemdata, setItemdata] = useState([])
     const [updateproduct, setUpdateproduct] = useState("")
     const [response, setResponse] = useState("")
@@ -57,6 +60,9 @@ function ItemsForm() {
     }
 
     async function getItems() {
+        let variants = ["primary", "secondary", "light", "dark", "info", "danger", "warning"]
+        let st = variants[Math.floor(Math.random() * variants.length)]
+        setVariantStyle(st)
         try {
             let res = await api.get('/');
             console.log(res.data)
@@ -64,6 +70,29 @@ function ItemsForm() {
         } catch (err) {
             console.log(err)
         }
+    }
+
+    async function delupd(itemname) {
+        let variants = ["primary", "secondary", "light", "dark", "info", "danger", "warning"]
+        let st = variants[Math.floor(Math.random() * variants.length)]
+        setVariantStyle(st)
+        console.log(itemname)
+
+        let config = {
+            headers: {
+                Authorization: "authToken",
+            },
+            data: { "product": itemname.product },
+        };
+        try {
+            let res = await api.delete('/', config)
+            let resultdata = await api.get('/');
+            setResponse(res.data)
+            setItemdata(resultdata.data)
+        } catch (err) {
+            console.log(err)
+        }
+
     }
     return (
         <React.Fragment>
@@ -82,25 +111,17 @@ function ItemsForm() {
                 <button type='button' onClick={updateItem} className="btn btn-secondary m-3">Update</button>
                 <button type='button' onClick={getItems} className="btn btn-success m-3">Get Items</button>
             </form>
-            {/* <form>
-                <input type="text" placeholder="Enter new Item" onChange={handleChange} value={item}></input>
-                <input type="text" placeholder="Update Item" onChange={handleUpdate} value={updateproduct}></input>
-            </form> */}
             <p>{response}</p>
-            <table className='table table-hover table-dark table-sm mt-5'>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {itemdata.map((item, index) => (<tr key={index}><td>{index}</td><td>{item._id}</td><td>{item.product}</td><td>{item.date}</td></tr>))}
-                </tbody>
-            </table>
-        </React.Fragment>
+            <ListGroup as="ol" numbered>
+                {itemdata.map((item, index) => (
+                    <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center" variant={variantstyle}>
+                        <div className="ms-2">
+                            <div className="fw-bold">{item.product}</div>
+                        </div>
+                        <button type='button' onClick={() => { delupd(item) }} className="btn btn-outline-danger">❌</button>
+                    </ListGroup.Item>))}
+            </ListGroup>
+        </React.Fragment >
     );
 }
 

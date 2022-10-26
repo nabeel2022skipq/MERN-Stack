@@ -24,6 +24,7 @@ routes.post('/', (req, res) => {
 })
 
 routes.delete('/', (req, res) => {
+    console.log(req.body)
     deletedb(req.body).then(result => {
         if (result === true) {
             res.send("Item deleted from database")
