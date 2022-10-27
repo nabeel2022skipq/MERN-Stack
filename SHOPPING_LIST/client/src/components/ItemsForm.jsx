@@ -105,6 +105,7 @@ function ItemsForm() {
                 <button type='button' onClick={getItems} className="btn btn-success m-3">Get Items</button>
             </form>
             <p>{response}</p>
+            {/* //React Bootstrap */}
             <ListGroup as="ol" numbered>
                 {itemdata.map((item, index) => (
                     <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center">
