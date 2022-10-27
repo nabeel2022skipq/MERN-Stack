@@ -31,7 +31,7 @@ export default class Example extends React.Component {
         return (
             <div>
                 <Navbar color="dark" dark expand="sm">
-                    <NavbarBrand href="/">Shopping List</NavbarBrand>
+                    <NavbarBrand href="/"><img className='m-1' src='https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-campus-recreation-university-nebraska-lincoln-30.png' width="50" height="50"></img>Shopping List</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
