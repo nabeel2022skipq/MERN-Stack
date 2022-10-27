@@ -15,7 +15,6 @@ const api = axios.create({
 
 function ItemsForm() {
     const [item, setItem] = useState("")
-    const [variantstyle, setVariantStyle] = useState("")
     const [itemdata, setItemdata] = useState([])
     const [updateproduct, setUpdateproduct] = useState("")
     const [response, setResponse] = useState("")
@@ -60,9 +59,6 @@ function ItemsForm() {
     }
 
     async function getItems() {
-        let variants = ["primary", "secondary", "light", "dark", "info", "danger", "warning"]
-        let st = variants[Math.floor(Math.random() * variants.length)]
-        setVariantStyle(st)
         try {
             let res = await api.get('/');
             console.log(res.data)
@@ -73,9 +69,6 @@ function ItemsForm() {
     }
 
     async function delupd(itemname) {
-        let variants = ["primary", "secondary", "light", "dark", "info", "danger", "warning"]
-        let st = variants[Math.floor(Math.random() * variants.length)]
-        setVariantStyle(st)
         console.log(itemname)
 
         let config = {
@@ -97,14 +90,14 @@ function ItemsForm() {
     return (
         <React.Fragment>
             <form>
-                <div class="form-group mx-sm-3 m-2">
-                    <label for="addItem" className='mt-3'>Item</label>
-                    <input type="text" class="form-control" placeholder="Enter Item Name" onChange={handleChange} value={item} />
-                    <small id="emailHelp" class="form-text text-muted">Enter the name of the item perfom CRUD on Mongodb</small>
+                <div className="form-group mx-sm-3 m-2">
+                    <label htmlFor="addItem" className='mt-3'>Item</label>
+                    <input type="text" className="form-control" placeholder="Enter Item Name" onChange={handleChange} value={item} />
+                    <small id="emailHelp" className="form-text text-muted">Enter the name of the item perfom CRUD on Mongodb</small>
                 </div>
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="updateItem" className='mt-3'>Update Item</label>
-                    <input type="text" class="form-control" placeholder="Update Item Name" onChange={handleUpdate} value={updateproduct} />
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="updateItem" className='mt-3'>Update Item</label>
+                    <input type="text" className="form-control" placeholder="Update Item Name" onChange={handleUpdate} value={updateproduct} />
                 </div>
                 <button type='button' onClick={addItem} className="btn btn-primary m-3">Add</button>
                 <button type='button' onClick={deleteItem} className="btn btn-danger m-3">Delete</button>
@@ -114,7 +107,7 @@ function ItemsForm() {
             <p>{response}</p>
             <ListGroup as="ol" numbered>
                 {itemdata.map((item, index) => (
-                    <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center" variant={variantstyle}>
+                    <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center">
                         <div className="ms-2">
                             <div className="fw-bold">{item.product}</div>
                         </div>
