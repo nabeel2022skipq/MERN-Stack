@@ -1,4 +1,5 @@
 import React from 'react';
+import '../components/stylesheetscss/navbar.css'
 import {
     Collapse,
     Navbar,
@@ -6,11 +7,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    NavLink
 } from 'reactstrap';
 
 export default class Example extends React.Component {
@@ -31,33 +28,16 @@ export default class Example extends React.Component {
         return (
             <div>
                 <Navbar color="dark" dark expand="sm">
-                    <NavbarBrand href="/"><img className='m-1' src='https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-campus-recreation-university-nebraska-lincoln-30.png' width="50" height="50"></img>Shopping List</NavbarBrand>
+                    <NavbarBrand href="/"><img className='m-1' src='https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-campus-recreation-university-nebraska-lincoln-30.png' alt='shop-list' width="50" height="50"></img>Shopping List</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
+                                <NavLink href="https://www.linkedin.com/in/nabeel-ahmad-2843a724b/">Linkedin</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                                <NavLink href="https://github.com/nabeel2022skipq">GitHub</NavLink>
                             </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        Option 1
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Option 2
-                                    </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        Reset
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
                         </Nav>
                     </Collapse>
                 </Navbar>

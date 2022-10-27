@@ -7,7 +7,7 @@ const routes = express.Router();
 routes.get('/', (req, res) => {
     console.log("Get request")
     getdb(req.body).then(result => {
-        res.send(result)
+        res.json(result)
     })
 })
 
@@ -27,22 +27,23 @@ routes.delete('/', (req, res) => {
     console.log(req.body)
     deletedb(req.body).then(result => {
         if (result === true) {
-            res.send("Item deleted from database")
+            res.send(`${req.body.product} deleted from database`)
         }
         else {
-            res.send("Item does not exist in the database.")
+            res.send(`${req.body.product} does not exist in the database.`)
         }
     })
 
 })
 
 routes.put('/', (req, res) => {
+    console.log(req.body)
     updatedb(req.body).then(result => {
         if (result === true) {
-            res.send("Item Updated")
+            res.send(`Item updated from ${req.body.product} to ${req.body.updateproduct}.`)
         }
         else {
-            res.send("Item does not exist in the database.")
+            res.send(`${req.body.product} does not exist in the database.`)
         }
     })
 })
