@@ -105,7 +105,7 @@ function ItemsForm() {
                 <button type='button' onClick={updateItem} className="btn btn-secondary m-3">Update</button>
                 <button type='button' onClick={getItems} className="btn btn-success m-3">Get Items</button>
             </form>
-            <p>{response}</p>
+            <p className='response' style={{ color: "black", fontFamily: "Source Sans Pro", fontSize: "18px" }}>{response}</p>
             {/* //React Bootstrap */}
             <ListGroup>
                 <TransitionGroup className="shopping-list">
