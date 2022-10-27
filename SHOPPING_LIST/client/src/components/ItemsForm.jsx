@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Badge from 'react-bootstrap/Badge';
-import ListGroup from 'react-bootstrap/ListGroup';
+// import ListGroup from 'react-bootstrap/ListGroup';
+import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
 const api = axios.create({
@@ -88,7 +89,7 @@ function ItemsForm() {
 
     }
     return (
-        <React.Fragment>
+        <Container>
             <form>
                 <div className="form-group mx-sm-3 m-2">
                     <label htmlFor="addItem" className='mt-3'>Item</label>
@@ -106,16 +107,21 @@ function ItemsForm() {
             </form>
             <p>{response}</p>
             {/* //React Bootstrap */}
-            <ListGroup as="ol" numbered>
-                {itemdata.map((item, index) => (
-                    <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center">
-                        <div className="ms-2">
-                            <div className="fw-bold">{item.product}</div>
-                        </div>
-                        <button type='button' onClick={() => { delupd(item) }} className="btn btn-outline-danger">❌</button>
-                    </ListGroup.Item>))}
+            <ListGroup>
+                <TransitionGroup className="shopping-list">
+                    {itemdata.map((item, index) => (
+                        <CSSTransition key={index} timeout={500} classNames="fade">
+                            <ListGroupItem key={index}>
+                                <Button className='remove-item' color='danger' size='sm' onClick={() => { delupd(item) }}>&times;</Button>
+                                {item.product}
+                                {/* <button type='button' onClick={() => { delupd(item) }} className="btn btn-outline-danger">❌</button> */}
+                            </ListGroupItem>
+                        </CSSTransition>
+                    ))}
+
+                </TransitionGroup>
             </ListGroup>
-        </React.Fragment >
+        </Container >
     );
 }
 
