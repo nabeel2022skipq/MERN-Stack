@@ -18,13 +18,6 @@ function ReadData(props) {
             <UpdateData oldprod={item.product}></UpdateData>
         </ListGroupItem>
     </CSSTransition>)
-    // async function readItems() {
-    //     try {
-    //         props.getItems();
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
 
     useEffect(() => {
         props.getItems();
