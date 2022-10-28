@@ -1,35 +1,33 @@
 import React from 'react';
 import '../components/stylesheetscss/readdata.css'
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'reactstrap';
-
-const api = axios.create({
-    baseURL: "http://localhost:5000/api/items",
-    header: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-    },
-});
+import { delItem } from '../actions/ItemsActions';
+import { connect } from 'react-redux';
+import PropTypes, { func } from 'prop-types'
 
 function DelData(props) {
-    async function deleteItem() {
-        let config = {
-            headers: {
-                Authorization: "authToken",
-            },
-            data: { "product": props.prod },
-        };
-        try {
-            let res = await api.delete('/', config);
-            alert(res.data + ". Refresh page to see new content")
-        } catch (err) {
-            console.log(err)
-        }
+    let children = props.prod
+    let newItem = { "product": children }
+    function deleteItem() {
+        props.delItem(newItem);
     }
     return (
         <Button className='remove-item' color='danger' size='sm' onClick={deleteItem}>&times;</Button>
     );
 }
+DelData.propTypes = {
+    children: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
+    delItem: PropTypes.func.isRequired
+}
+const mapDispatchToProps = {
+    delItem
+}
 
-export default DelData;
+function mapStateToProps(state) {
+    return {
+        item: state.item
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(DelData);

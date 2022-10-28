@@ -3,14 +3,11 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { updItem } from '../actions/ItemsActions';
+import { connect } from 'react-redux';
+import PropTypes, { func } from 'prop-types'
 
-const api = axios.create({
-    baseURL: "http://localhost:5000/api/items",
-    header: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-    },
-});
+
 
 function UpdateData(props) {
     const [show, setShow] = useState(false);
@@ -23,12 +20,9 @@ function UpdateData(props) {
     }
     async function updateItem(e) {
         setShow(false)
-        try {
-            let res = await api.put('/', { "product": props.oldprod, "updateproduct": updateproduct });
-            alert(res.data + " Refresh page to see new content")
-        } catch (err) {
-            console.log(err)
-        }
+        let children = props.oldprod
+        let newItem = { "product": children, "updateproduct": updateproduct }
+        props.updItem(newItem)
     }
     return (
         <>
@@ -64,4 +58,18 @@ function UpdateData(props) {
     );
 }
 
-export default UpdateData;
+UpdateData.propTypes = {
+    children: PropTypes.object.isRequired,
+    updItem: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
+}
+
+const mapDispatchToProps = {
+    updItem
+}
+function mapStateToProps(state) {
+    return {
+        item: state.item
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateData);

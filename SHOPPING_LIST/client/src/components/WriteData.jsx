@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { insertItem } from '../actions/ItemsActions';
 import { Container } from 'reactstrap';
-const api = axios.create({
-    baseURL: "http://localhost:5000/api/items",
-    header: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-    },
-});
-function WriteData() {
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+
+function WriteData(props) {
     const [item, setItem] = useState("")
-    const [response, setResponse] = useState("")
 
     function handleChange(e) {
         setItem(e.target.value)
     }
-    async function addItem() {
+    function addItem() {
         let currentdate = new Date();
-        try {
-            let res = await api.post('/', { "product": item, "date": currentdate })
-            setResponse(res.data)
-        } catch (err) {
-            console.log(err)
-        }
+        let newItem = { "product": item, "date": currentdate }
+        props.insertItem(newItem)
+
     }
     return (
         <Container>
@@ -33,11 +25,26 @@ function WriteData() {
                     <input type="text" className="form-control" placeholder="Enter Item Name" onChange={handleChange} value={item} />
                     <small id="emailHelp" className="form-text text-muted">Enter the name of the item perfom CRUD on Mongodb</small>
                 </div>
-                <button type='button' onClick={addItem} className="btn btn-primary m-3">Add</button>
+                <center>
+                    <button type='button' onClick={addItem} className="btn btn-secondary m-3 shadow shadow" style={{ width: "20rem" }}>Add New Item</button>
+                    <hr></hr>
+                </center>
             </form>
-            <p className='response' style={{ color: "black", fontFamily: "Source Sans Pro", fontSize: "18px" }}>{response}</p>
         </Container>
     );
 }
 
-export default WriteData;
+WriteData.propTypes = {
+    insertItem: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
+}
+const mapDispatchToProps = {
+    insertItem
+}
+function mapStateToProps(state) {
+    return {
+        item: state.item
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WriteData);

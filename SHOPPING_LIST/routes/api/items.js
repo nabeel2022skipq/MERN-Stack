@@ -13,6 +13,7 @@ routes.get('/', (req, res) => {
 
 routes.post('/', (req, res) => {
     console.log("POST REQUEST")
+    console.log(req.body)
     createdb(req.body).then(result => {
         if (result === true) {
             res.send(`${req.body.product} already exist in the Database`)

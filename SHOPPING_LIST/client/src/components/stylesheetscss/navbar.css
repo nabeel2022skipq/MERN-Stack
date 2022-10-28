@@ -1,6 +1,16 @@
-img {
+/* img {
     transition: transform .7s ease-in-out;
   }
   img:hover {
     transform: rotate(360deg);
+  } */
+
+  img {
+    position: relative;
+    animation: mymove 5s infinite;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes mymove {
+    100% { transform: rotate(360deg); }
   }
