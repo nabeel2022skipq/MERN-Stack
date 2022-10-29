@@ -1,0 +1,4 @@
+{
+    "mongoDBURI":"mongodb+srv://nabeelahmad:nabeelahmad123@cluster0.8fg5bt6.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSeceret":"sl_myJWTSeceret"
+}
