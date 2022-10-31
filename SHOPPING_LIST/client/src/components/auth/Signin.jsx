@@ -40,29 +40,29 @@ function Login(props) {
                     <h3 m-4>Sign In</h3>
                     <div className="mb-3">
                         <label>Email address</label>
-                        <input
+                        <input style={{ backgroundColor: "#28282B", color: "white" }}
                             type="email"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter email"
                             onChange={(e) => setemailValue(e.target.value)}
                         />
                     </div>
                     <div className="mb-3">
                         <label>Password</label>
-                        <input
+                        <input style={{ backgroundColor: "#28282B", color: "white" }}
                             type="password"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter password"
                             onChange={(e) => setpasswordValue(e.target.value)}
                         />
                     </div>
                     <div className="d-grid">
-                        <button type="button" className="btn btn-primary" onClick={loginexistingUser}>
+                        <button id="login" type="button" className="mt-4" onClick={loginexistingUser}>
                             LOGIN
                         </button>
                     </div>
                     <p className="forgot-password text-right">
-                        Create an account <Link to="/sign-up">sign up?</Link>
+                        Create an account <Link style={{ textDecoration: "none", color: 'rgba(0,255,255,0.7)', fontSize: "15px" }} to="/sign-up">sign up?</Link>
                     </p>
                 </form>
             </div>

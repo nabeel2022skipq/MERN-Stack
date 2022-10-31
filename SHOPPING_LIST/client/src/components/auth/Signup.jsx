@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../stylesheetscss/auth.css'
 import { registerUser } from '../../actions/authActions'
 import PropTypes from 'prop-types'
@@ -9,6 +9,7 @@ import { Alert } from 'reactstrap'
 
 
 function SignUp(props) {
+    const navigate = useNavigate();
     const [nameValue, setnameValue] = useState("")
     const [emailValue, setemailValue] = useState("")
     const [passwordValue, setpasswordValue] = useState("")
@@ -17,6 +18,9 @@ function SignUp(props) {
     function registernewUser() {
         let newUser = { "name": nameValue, "email": emailValue, "password": passwordValue }
         props.registerUser(newUser)
+    }
+    if (props.isAuthenticated) {
+        navigate('/home');
     }
 
     useEffect(() => {
@@ -35,38 +39,38 @@ function SignUp(props) {
                     <h3>Sign Up</h3>
                     <div className="mb-3">
                         <label>Name</label>
-                        <input
+                        <input style={{ backgroundColor: "#28282B", color: "white" }}
                             type="text"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Name"
                             onChange={(e) => setnameValue(e.target.value)}
                         />
                     </div>
                     <div className="mb-3">
                         <label>Email address</label>
-                        <input
+                        <input style={{ backgroundColor: "#28282B", color: "white" }}
                             type="email"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter email"
                             onChange={(e) => setemailValue(e.target.value)}
                         />
                     </div>
                     <div className="mb-3">
                         <label>Password</label>
-                        <input
+                        <input style={{ backgroundColor: "#28282B", color: "white" }}
                             type="password"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter password"
                             onChange={(e) => setpasswordValue(e.target.value)}
                         />
                     </div>
                     <div className="d-grid">
-                        <button type="button" className="btn btn-primary" onClick={registernewUser}>
+                        <button id='signup' type="button" className="btn btn-primary mt-4" onClick={registernewUser}>
                             Sign Up
                         </button>
                     </div>
                     <p className="forgot-password text-right">
-                        Already registered <Link to="/sign-in">sign in?</Link>
+                        Already registered <Link style={{ textDecoration: "none", color: 'rgba(0,255,255,0.7)', fontSize: "15px" }} to="/sign-in">sign in?</Link>
                     </p>
                 </form>
             </div>

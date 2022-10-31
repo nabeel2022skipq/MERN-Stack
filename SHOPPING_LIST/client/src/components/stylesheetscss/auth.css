@@ -5,6 +5,7 @@
 body {
   background: #28282B !important;
   min-height: 100vh;
+  overflow: hidden;
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
@@ -30,9 +31,10 @@ body, html, .App, #root, .auth-wrapper {
 .auth-inner {
   width: 450px;
   margin: auto;
-  background: #ffffff;
+  background: #28282B;
+  color: white;
   box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
-            1px 2px 4px 0px rgba(0,255,255,0.7),
+            1px 2px 4px 0px rgba(197, 221, 221, 0.7),
             2px 4px 8px 0px rgba(0,255,255,0.7),
             2px 4px 16px 0px rgba(0,255,255,0.7);
   padding: 40px 55px 45px 55px;
@@ -48,6 +50,11 @@ body, html, .App, #root, .auth-wrapper {
   margin: 0;
   line-height: 1;
   padding-bottom: 20px;
+  transition: font-size 0.3s;
+}
+.auth-wrapper h3:hover{
+  font-size: 50px;
+  color:  rgba(0,255,255,0.7);
 }
 .custom-control-label {
   font-weight: 400;
@@ -62,4 +69,29 @@ body, html, .App, #root, .auth-wrapper {
 }
 .forgot-password a {
   color: #167bff;
+}
+#login{
+  border: 2px solid rgba(0,255,255,0.7);
+  background-color: #28282B;
+  color: rgba(0,255,255,0.7);
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#login:hover {
+  background-color: rgba(0,255,255,0.7);
+  color: black;
+}
+
+#signup{
+  border: 2px solid rgba(0,255,255,0.7);
+  background-color: #28282B;
+  color: rgba(0,255,255,0.7);
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#signup:hover {
+  background-color: rgba(0,255,255,0.7);
+  color: black;
 }

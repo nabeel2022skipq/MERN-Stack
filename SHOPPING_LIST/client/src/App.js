@@ -23,8 +23,8 @@ function App() {
   return (
     !loading && (
       <BrowserRouter>
+        <Example></Example>
         <div className="App">
-          <Example></Example>
           <Routes>
             <Route exact path='/' element={<SignUp></SignUp>}></Route>
             <Route exact path='/sign-up' element={<SignUp></SignUp>}></Route>

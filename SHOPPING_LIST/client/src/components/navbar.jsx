@@ -47,7 +47,7 @@ class Example extends React.Component {
         return (
             <div>
                 <Navbar color="secondary" dark expand="sm">
-                    <NavbarBrand href="/"><img id className='m-2' src='https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' alt='shop-list' width="50" height="50"></img>Shopping List</NavbarBrand>
+                    <NavbarBrand href="/home"><img id className='m-2' src='https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' alt='shop-list' width="50" height="50"></img>Shopping List</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
