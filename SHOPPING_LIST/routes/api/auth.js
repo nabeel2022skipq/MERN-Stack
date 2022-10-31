@@ -8,20 +8,19 @@ const auth = require('../../middleware/auth');
 
 
 
-
 routes.post('/', (req, res) => {
     console.log("POST REQUEST")
-    if (!req.body.name || !req.body.email || !req.body.password) {
+    if (!req.body.email || !req.body.password) {
         return res.status(400).json({ "Error": "Please fill all fields" })
     }
     findUser(req.body).then(user => {
         if (!user) {
-            return res.status(400).json({ "error": "user does not registered!" })
+            return res.status(400).json({ "Error": "user does not registered!" })
         }
         else {
             bcrypt.compare(req.body.password, user.password).then(isMatch => {
                 if (!isMatch) {
-                    res.status(400).json({ "ERROR": "Please enter correct credentials" })
+                    res.status(400).json({ "Error": "Please enter correct credentials" })
                 }
                 jwt.sign(
                     { id: user._id },

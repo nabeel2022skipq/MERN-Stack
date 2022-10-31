@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +22,117 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>Shopping List</title>
+  <style>
+    @keyframes scaling {
+
+      0%,
+      100% {
+        transform: scale(0.2);
+        background-color: #30FFB7;
+      }
+
+      40% {
+        transform: scale(1);
+        background-color: #07DEFF;
+      }
+
+      50% {
+        transform: scale(1);
+        background-color: #0761FF;
+      }
+    }
+
+    #spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -100px;
+    }
+
+    .spin {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      transform: scale(0);
+      background-color: red;
+      animation: scaling 2.5s ease-in-out infinite;
+      display: inline-block;
+      margin: .5rem;
+    }
+
+    .spin:nth-child(0) {
+      animation-delay: 0s;
+    }
+
+    .spin:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .spin:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .spin:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .spin:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .spin:nth-child(5) {
+      animation-delay: 1s;
+    }
+
+    h1 {
+      color: #777;
+      text-transform: uppercase;
+      animation: moveInLeft 1s ease-out;
+    }
+
+
+
+    @keyframes moveInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+
+      80% {
+        transform: translateX(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="spinner">
+    <center>
+      <h1>Loading...</h1>
+    </center>
+    <!-- <div class="main">
+      <h1 class="main-heading">
+        <span class="main-heading-primary">SHOPPING LIST</span>
+        <span class="main-heading-secondary">MERN</span>
+      </h1>
+    </div> -->
+    <div class="spin"></div>
+    <div class="spin"></div>
+    <div class="spin"></div>
+    <div class="spin"></div>
+    <div class="spin"></div>
+  </div>
+
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +142,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

@@ -1,22 +1,19 @@
 import axios from "axios"
 const api = axios.create({
-    // baseURL: "http://localhost:5000/api/items",
-    header: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-    },
+    baseURL: "http://localhost:5000/api/items",
+
 });
 
 export const getItems = () => dispatch => {
     dispatch(setItemsLoading());
-    api.get('/api/items').then(result => dispatch({
+    api.get('/').then(result => dispatch({
         type: "GET_ITEMS",
         payload: result.data
     }))
 }
 
-export const insertItem = (item) => async dispatch => {
-    await api.post('/api/items', item).then(res => dispatch({
+export const insertItem = (item) => dispatch => {
+    api.post('/', item).then(res => dispatch({
         type: "ADD_ITEM",
         payload: item
     }))
@@ -29,7 +26,7 @@ export const delItem = (item) => async dispatch => {
         },
         data: item,
     };
-    await api.delete('/api/items', config).then(result => dispatch({
+    await api.delete('/', config).then(result => dispatch({
         type: "DEL_ITEM",
         payload: item
     }))
@@ -37,7 +34,7 @@ export const delItem = (item) => async dispatch => {
 }
 
 export const updItem = (item) => async dispatch => {
-    await api.put('/api/items', item).then(result => dispatch({
+    await api.put('/', item).then(result => dispatch({
         type: "UPDATE_ITEM",
         payload: item
     }))

@@ -17,7 +17,7 @@ function DelData(props) {
     );
 }
 DelData.propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.object,
     item: PropTypes.object.isRequired,
     delItem: PropTypes.func.isRequired
 }

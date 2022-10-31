@@ -12,10 +12,10 @@ import PropTypes from 'prop-types'
 function ReadData(props) {
     const arr = props.item.items
     const ItemsList = arr.map(item => <CSSTransition key={item._id} timeout={500} classNames="fade">
-        <ListGroupItem key={item._id}>
-            <DelData prod={item.product}></DelData>
+        <ListGroupItem key={item._id} style={{ backgroundColor: "#28282B", color: "white", boxShadow: "1px 1px 1px 1px white" }}>
+            {props.token ? <DelData prod={item.product}></DelData> : null}
             {item.product}
-            <UpdateData oldprod={item.product}></UpdateData>
+            {props.token ? <UpdateData oldprod={item.product}></UpdateData> : null}
         </ListGroupItem>
     </CSSTransition>)
 
@@ -34,7 +34,9 @@ function ReadData(props) {
 }
 ReadData.propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool,
+    token: PropTypes.string.isRequired
 }
 const mapDispatchToProps = {
     getItems
@@ -42,7 +44,9 @@ const mapDispatchToProps = {
 function mapStateToProps(state) {
     return {
         //state.item bcz we name ItemReducer item in index.js
-        item: state.item
+        item: state.item,
+        isAuthenticated: state.isAuthenticated,
+        token: state.auth.token
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ReadData);

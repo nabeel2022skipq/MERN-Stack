@@ -26,7 +26,7 @@ async function createdb(product) {
         if (doc.length > 0) {
             isalreadyPresent = true
             console.log("Item already exist in the database")
-            return isalreadyPresent
+            return doc[0]
         }
         else {
             await client.db("ItemsList").collection("products").insertOne(product);

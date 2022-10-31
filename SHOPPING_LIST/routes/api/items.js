@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../../middleware/auth');
 const { getdb, createdb, deletedb, updatedb } = require('../../mongo_database');
 const routes = express.Router();
 
@@ -11,13 +12,15 @@ routes.get('/', (req, res) => {
     })
 })
 
-routes.post('/', (req, res) => {
+//add auth(middleware) as 2nd parameter in order to make the route protected
+routes.post('/', async (req, res) => {
     console.log("POST REQUEST")
+    console.log(req)
     console.log(req.body.product)
     console.log(req.body.date)
     createdb(req.body).then(result => {
-        if (result === true) {
-            res.send(`${req.body.product} already exist in the Database`)
+        if (result) {
+            res.send(result)
         }
         else {
             res.send(`${req.body.product} added to the Database`)

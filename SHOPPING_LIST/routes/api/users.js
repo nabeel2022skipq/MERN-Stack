@@ -15,7 +15,7 @@ const config = require('config')
 routes.post('/', (req, res) => {
     console.log("POST REQUEST")
     if (!req.body.name || !req.body.email || !req.body.password) {
-        return res.status(400).json({ "Error": "Please fill all fields" })
+        return res.status(400).json({ msg: "Please fill all fields" })
     }
     console.log(req.body)
     // const { name, email, password } = req.body

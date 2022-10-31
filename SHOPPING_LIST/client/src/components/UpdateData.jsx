@@ -59,7 +59,7 @@ function UpdateData(props) {
 }
 
 UpdateData.propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.object,
     updItem: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired
 }
