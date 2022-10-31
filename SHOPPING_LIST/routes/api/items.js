@@ -8,6 +8,7 @@ const routes = express.Router();
 routes.get('/', (req, res) => {
     console.log("Get request")
     getdb(req.body).then(result => {
+        console.log(result)
         res.json(result)
     })
 })

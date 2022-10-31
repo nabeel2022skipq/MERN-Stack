@@ -1,12 +1,12 @@
 import axios from "axios"
 import { returnError } from "./errorActions";
 const api = axios.create({
-    baseURL: "http://localhost:5000/api/users"
+    // baseURL: "http://localhost:5000/api/users"
 });
 
 export const registerUser = (user) => async dispatch => {
 
-    api.post('/', user).then(result => dispatch({
+    api.post('/api/users', user).then(result => dispatch({
         type: "REGISTER_SUCCESS",
         payload: result.data
     }))
@@ -19,7 +19,7 @@ export const registerUser = (user) => async dispatch => {
 }
 
 export const loginUser = (user) => async dispatch => {
-    api.post('/auth', user).then(result => dispatch({
+    api.post('/api/users/auth', user).then(result => dispatch({
         type: "LOGIN_SUCCESS",
         payload: result.data
     }))
@@ -42,7 +42,7 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({
         type: "USER_LOADING"
     })
-    api.get('/auth/user', tokenConfig(getState)).then(result => dispatch({
+    api.get('/api/users/auth/user', tokenConfig(getState)).then(result => dispatch({
         type: "USER_LOADED",
         payload: result.data
     }))

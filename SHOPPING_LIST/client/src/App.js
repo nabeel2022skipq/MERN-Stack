@@ -9,9 +9,9 @@ import store from './store';
 import { loadUser } from './actions/authActions';
 
 function App() {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
+  // useEffect(() => {
+  //   store.dispatch(loadUser());
+  // }, []);
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
   if (spinner) {
