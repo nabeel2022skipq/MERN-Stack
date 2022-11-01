@@ -1,0 +1,120 @@
+* {
+    transition: 0.3s;
+}
+
+body {
+    background-color: #28282B;
+    color: #fdfdfd;
+}
+#cardprofile {
+    max-width: 80rem;
+    margin: 100px auto 0;
+    margin-left: 260px;
+    background-color: #42515a;
+    box-shadow: 0 10px 90px #00000024;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+#cardprofile #cardprofile-header {
+    position: relative;
+    height: 48px;
+}
+#cardprofile #cardprofile-header .profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 1000px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 8px solid rgba(0,255,255,0.7);
+    box-shadow: 0 0 20px #00000033;
+}
+
+#cardprofile #cardprofile-header .profile-img:hover {
+    width: 180px;
+    height: 180px;
+    border: 8px solid rgba(0,255,255,0.7);
+}
+#cardprofile #cardprofile-body {
+    padding: 10px 40px;
+}
+
+#cardprofile #cardprofile-body #cardprofilename {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(0,255,255,0.7);
+}
+
+#cardprofile #cardprofile-body #cardprofilename:hover {
+    margin-top: 30px;
+    font-size: 24px;
+    color: rgba(0,255,255,0.7);
+}
+
+#cardprofile #cardprofile-body #cardprofilemail {
+    font-size: 14px;
+    color: #c2bdbd;
+}
+
+#cardprofile #cardprofile-body #cardprofilemail:hover {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+#cardprofile #cardprofile-body .job {
+    margin-top: 10px;
+    font-size: 14px;
+}
+#cardprofile .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#cardprofile .social-links .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(0,255,255,0.7);
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 100%;
+    text-decoration: none;
+    margin: 0 13px 30px 0;
+}
+
+#cardprofile .social-links .social-icon:last-child {
+    margin-right: 0;
+}
+
+#cardprofile .social-links .social-icon:hover {
+    background-color: rgba(0,255,255,0.7);
+    height: 50px;
+    width: 50px;
+    text-decoration: none;
+}
+#cardprofile #cardprofile-footer {
+    background-color: rgba(0,255,255,0.7);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 20px 0 20px 0;
+}
+
+#cardprofile #cardprofile-footer .count {
+    font-size: 14px;
+}
+@media screen and (max-width: 575px) {
+    #cardprofile {
+        width: 96%;
+    }
+
+    #cardprofile #cardprofile-body {
+        padding: 10px 20px;
+    }
+}
