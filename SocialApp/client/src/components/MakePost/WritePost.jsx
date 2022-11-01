@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes, { func } from 'prop-types'
 import { useState } from 'react';
 import { insertPost } from '../../actions/postActions';
+import { UncontrolledAlert } from 'reactstrap';
+import { Link } from 'react-router-dom';
 function WritePost(props) {
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
@@ -30,20 +32,24 @@ function WritePost(props) {
                     <input type="text" name="description" placeholder='Write something to make a post' onChange={e => setDesc(e.target.value)} />
                     <label>Write Something...</label>
                 </div>
-                <a href="#" onClick={writePosts}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Create Post
-                </a>
+                {!props.isAuthenticated ? <UncontrolledAlert color='info'>Login or Signup to perform CRUD operation</UncontrolledAlert> :
+                    <a href="#" onClick={writePosts}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Create Post
+                    </a>
+                }
             </form>
         </div>
     );
 }
 
 WritePost.propTypes = {
-    posts: PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired,
+    error: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 const mapDispatchToProps = {
     insertPost
@@ -51,7 +57,9 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state) {
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        error: state.error,
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 

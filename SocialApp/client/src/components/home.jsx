@@ -26,7 +26,7 @@ function Home(props) {
                             {post.description}
                         </Card.Text>
                         {/* <a href="#" class="btn btn-outline-info">Delete Post</a> */}
-                        <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost>
+                        {props.token ? <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost> : null}
                     </Card.Body>
                 </Card>
             ))}
@@ -38,7 +38,9 @@ function Home(props) {
 
 Home.protoTypes = {
     posts: PropTypes.array.isRequired,
-    getPosts: PropTypes.func.isRequired
+    getPosts: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    token: PropTypes.string.isRequired
 
 }
 const mapDispatchToProps = {
@@ -46,7 +48,9 @@ const mapDispatchToProps = {
 }
 function mapStateToProps(state) {
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        isAuthenticated: state.auth.isAuthenticated,
+        token: state.auth.token
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

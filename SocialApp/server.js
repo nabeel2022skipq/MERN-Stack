@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 5000
 
 //Will direct the request to the following path
 const post = require('./routes/api/posts')
+const user = require('./routes/api/users')
+const auth = require('./routes/api/auth')
 
 //Creating an express application
 const app = express();
@@ -17,6 +19,8 @@ app.use(cors());
 
 //Any request at /api/items will be reffered to the items variable
 app.use('/api/posts', post)
+app.use('/api/users', user)
+app.use('/api/users/auth', auth)
 
 //Serve static assets if in production state
 if (process.env.NODE_ENV === "production") {

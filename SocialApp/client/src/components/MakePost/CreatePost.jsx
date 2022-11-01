@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { connect } from 'react-redux';
+import PropTypes, { func } from 'prop-types'
+import { insertPost } from '../../actions/postActions';
 
 
 
 function CreateData(props) {
+    const [title, setTitle] = useState("")
+    const [desc, setDesc] = useState("")
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -13,12 +18,17 @@ function CreateData(props) {
 
     async function createItem(e) {
         setShow(false)
+        let newPost = {
+            "title": title,
+            "description": desc
+        }
+        props.insertPost(newPost);
     }
     return (
         <>
-            <button className='btn btn-outline-info btn-lg m-5' onClick={handleShow}  >
+            {props.isAuthenticated ? <button className='btn btn-outline-info btn-lg m-5' onClick={handleShow}  >
                 Post
-            </button>
+            </button> : null}
 
             <Modal show={show} onHide={handleClose} >
                 <Modal.Header style={{ background: "#28282B" }}>
@@ -32,7 +42,9 @@ function CreateData(props) {
                                 type="text"
                                 placeholder="Add title"
                                 autoFocus
-                                style={{ backgroundColor: "#28282B" }} />
+                                onChange={e => setTitle(e.target.value)}
+                                style={{ backgroundColor: "#28282B", color: "White" }} />
+
                         </Form.Group>
                         <Form.Group className="mt-3">
                             <Form.Label style={{ color: "#03e9f4" }}>Type Something to Post</Form.Label>
@@ -40,8 +52,8 @@ function CreateData(props) {
                                 type="text"
                                 placeholder="Type something..."
                                 autoFocus
-
-                                style={{ backgroundColor: "#28282B" }} />
+                                onChange={e => setDesc(e.target.value)}
+                                style={{ backgroundColor: "#28282B", color: "White" }} />
                         </Form.Group>
                         <Form.Group
                             className="mb-3"
@@ -56,5 +68,21 @@ function CreateData(props) {
     );
 }
 
+CreateData.propTypes = {
+    posts: PropTypes.array.isRequired,
+    error: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+const mapDispatchToProps = {
+    insertPost
+}
 
-export default CreateData;
+function mapStateToProps(state) {
+    return {
+        posts: state.post.posts,
+        error: state.error,
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateData);

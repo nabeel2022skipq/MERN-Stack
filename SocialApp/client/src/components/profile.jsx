@@ -27,9 +27,9 @@ function Profile(props) {
                 </div>
 
                 <div class="social-links">
-                    <a href="#" className='social-icon'><FaIcons.FaLinkedin></FaIcons.FaLinkedin></a>
-                    <a href="#" className="social-icon"><FaIcons.FaGithub></FaIcons.FaGithub></a>
-                    <a href="#" className="social-icon"><SiIcons.SiLeetcode></SiIcons.SiLeetcode></a>
+                    <a href="https://www.linkedin.com/in/nabeel-ahmad-2843a724b/" className='social-icon'><FaIcons.FaLinkedin></FaIcons.FaLinkedin></a>
+                    <a href="https://github.com/nabeel2022skipq" className="social-icon"><FaIcons.FaGithub></FaIcons.FaGithub></a>
+                    <a href="https://leetcode.com/nabeelskipq2022/" className="social-icon"><SiIcons.SiLeetcode></SiIcons.SiLeetcode></a>
                 </div>
 
                 <div id="cardprofile-footer">

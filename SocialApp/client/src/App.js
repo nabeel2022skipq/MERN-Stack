@@ -1,13 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { loadUser } from "./actions/authActions";
 import './App.css';
 import Login from "./components/auth/Signin";
 import SignUp from './components/auth/Signup';
 import Home from "./components/home";
 import WritePost from "./components/MakePost/WritePost";
 import Profile from "./components/profile";
+import { useEffect } from "react";
+import store from "./store";
 
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser())
+  })
   return (
     <BrowserRouter>
       <div className="App">
