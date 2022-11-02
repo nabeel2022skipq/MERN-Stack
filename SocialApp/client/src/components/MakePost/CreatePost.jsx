@@ -20,7 +20,9 @@ function CreateData(props) {
         setShow(false)
         let newPost = {
             "title": title,
-            "description": desc
+            "description": desc,
+            "email": props.user.email,
+            "name": props.user.name
         }
         props.insertPost(newPost);
     }
@@ -71,7 +73,9 @@ function CreateData(props) {
 CreateData.propTypes = {
     posts: PropTypes.array.isRequired,
     error: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    user: PropTypes.bool
+
 }
 const mapDispatchToProps = {
     insertPost
@@ -81,7 +85,8 @@ function mapStateToProps(state) {
     return {
         posts: state.post.posts,
         error: state.error,
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.user
     }
 }
 

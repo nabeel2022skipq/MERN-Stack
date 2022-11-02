@@ -4,6 +4,8 @@ const cors = require('cors');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+
+
 //Will direct the request to the following path
 const post = require('./routes/api/posts')
 const user = require('./routes/api/users')
@@ -12,15 +14,20 @@ const auth = require('./routes/api/auth')
 //Creating an express application
 const app = express();
 
-//Body-parser is the Node. js body parsing middleware.
-// It is responsible for parsing the incoming request bodies in a middleware before you handle it. 
-app.use(bodyParser.json());
-app.use(cors());
-
 //Any request at /api/items will be reffered to the items variable
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors())
+
 app.use('/api/posts', post)
 app.use('/api/users', user)
 app.use('/api/users/auth', auth)
+
+//Body-parser is the Node. js body parsing middleware.
+// It is responsible for parsing the incoming request bodies in a middleware before you handle it. 
+
+
+
 
 //Serve static assets if in production state
 if (process.env.NODE_ENV === "production") {

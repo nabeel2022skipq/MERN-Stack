@@ -13,6 +13,7 @@ function Login(props) {
     const [emailValue, setemailValue] = useState("")
     const [passwordValue, setpasswordValue] = useState("")
     const [msgValue, setmsgValue] = useState(null)
+    const [tokenValue, settokenValue] = useState(null)
 
 
 
@@ -31,11 +32,18 @@ function Login(props) {
         else {
             setmsgValue(null)
         }
+        if (props.token !== null) {
+            settokenValue(props.token)
+        }
+        else {
+            settokenValue(null)
+        }
     })
     return (
         <div className='auth-wrapper'>
             <div className='auth-inner'>
                 <form>
+                    {tokenValue ? <Alert color='success'>Login Successful! Loading...</Alert> : null}
                     {msgValue ? <Alert color='danger'>{msgValue}</Alert> : null}
                     <h3 m-4>Sign In</h3>
                     <div className="mb-3">
@@ -71,8 +79,9 @@ function Login(props) {
 }
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.bool,
-    error: PropTypes.object.isRequired
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    token: PropTypes.string
 }
 
 const mapDispatchToProps = {
@@ -81,7 +90,8 @@ const mapDispatchToProps = {
 function mapStateToProps(state) {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        error: state.error
+        error: state.error,
+        token: state.auth.token
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,11 +1,26 @@
-html {
+/* html {
     height: 100%;
   }
   body {
     background: linear-gradient(#141e30, #243b55);
-  }
+  } */
+  .user-box input[type="file" i]::-webkit-file-upload-button{
+    background: black;
+    border-color: #03e9f4;
+    color: white;
+    border-radius: 5px;
+    width: 10rem;
+    height: 2rem;
+}
+.user-box input[type="file" i]::-webkit-file-upload-button:hover{
+  background: #03e9f4;
+  border-color: #03e9f4;
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+}
   
-  .login-box {
+  /* .login-box {
     position: relative;
     top: 30%;
     left: 55%;
@@ -17,7 +32,7 @@ html {
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
-  }
+  } */
 
   .login-box h2 {
     margin: 0 0 30px;
@@ -169,3 +184,59 @@ html {
       bottom: 100%;
     }
   }
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+h6 {
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 14px;
+  line-height: 21px;
+}
+.create-inner {
+  width: 450px;
+  margin: auto;
+  background: #28282B;
+  color: white;
+  border-radius: 15px;
+  transition: all .3s;
+}
+.card-container {
+  margin-top: 10px;
+  margin-left: 260px;
+  background-color:rgba(0,0,0,.5);
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 2px #03BFCB;
+  padding: 40px 55px 45px 55px;
+  color: #B3B8CD;
+  padding-top: 30px;
+  position: relative;
+  width: 80rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.card-container .round {
+  border: 1px solid #03BFCB;
+  border-radius: 50%;
+  padding: 7px;
+}

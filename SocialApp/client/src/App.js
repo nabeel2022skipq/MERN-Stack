@@ -11,9 +11,6 @@ import store from "./store";
 
 
 function App() {
-  useEffect(() => {
-    store.dispatch(loadUser())
-  })
   return (
     <BrowserRouter>
       <div className="App">

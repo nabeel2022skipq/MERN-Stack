@@ -65,6 +65,7 @@ function mapStateToProps(state) {
         item: state.item,
         error: state.error,
         isAuthenticated: state.auth.isAuthenticated
+
     }
 }
 

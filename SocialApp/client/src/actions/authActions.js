@@ -1,7 +1,10 @@
 import axios from "axios"
 import { returnError, returnErrors } from "./errorActions";
 const api = axios.create({
-    baseURL: "http://localhost:5000/api/users"
+    baseURL: "http://localhost:5000/api/users",
+    header: {
+        "Access-Control-Allow-Origin": "*"
+    },
 });
 
 export const registerUser = (user) => async dispatch => {
@@ -42,7 +45,19 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({
         type: "USER_LOADING"
     })
-    api.get('/auth/user', tokenConfig(getState)).then(result => dispatch({
+    const token = getState().auth.token;
+    // Headers
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    };
+    // If token, add to headers
+    if (token) {
+        config.headers['x-auth-token'] = token;
+    }
+    console.log(config)
+    api.get('/auth/user', config).then(result => dispatch({
         type: "USER_LOADED",
         payload: result.data
     }))
@@ -56,21 +71,21 @@ export const loadUser = () => (dispatch, getState) => {
 
 }
 
-export const tokenConfig = (getState) => {
-    // Get token from localstorage
-    const token = getState().auth.token;
+// export const tokenConfig = (getState) => {
+//     // Get token from localstorage
+//     const token = getState().auth.token;
 
-    // Headers
-    const config = {
-        headers: {
-            'Content-type': 'application/json'
-        }
-    };
+//     // Headers
+//     const config = {
+//         headers: {
+//             'Content-type': 'application/json'
+//         }
+//     };
 
-    // If token, add to headers
-    if (token) {
-        config.headers['x-auth-token'] = token;
-    }
+//     // If token, add to headers
+//     if (token) {
+//         config.headers['x-auth-token'] = token;
+//     }
 
-    return config;
-};
+//     return config;
+// };

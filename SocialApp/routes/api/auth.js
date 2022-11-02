@@ -24,7 +24,7 @@ routes.post('/', (req, res) => {
                 }
                 jwt.sign(
                     { id: user._id },
-                    config.get("jwtSeceret"),
+                    config.get("JwtSeceret"),
                     (err, token) => {
                         if (err) throw err;
                         res.json({
@@ -33,7 +33,8 @@ routes.post('/', (req, res) => {
                                 "id": user._id,
                                 "name": user.name,
                                 "email": user.email,
-                                "password": user.password
+                                "password": user.password,
+                                "image": user.image
                             }
                         })
                     }

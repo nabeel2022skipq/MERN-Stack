@@ -11,14 +11,14 @@ export default function (state = initial_state, action) {
             return {
                 ...state,
                 isloading: true
-            }
+            };
         case "USER_LOADED":
             return {
                 ...state,
                 isloading: false,
                 isAuthenticated: true,
                 user: action.payload
-            }
+            };
         case "REGISTER_SUCCESS":
         case "LOGIN_SUCCESS":
             localStorage.setItem('token', action.payload.token)
@@ -28,7 +28,7 @@ export default function (state = initial_state, action) {
                 isAuthenticated: true,
                 isloading: false,
                 user: action.payload.user
-            }
+            };
         case "REGISTER_FAIL":
         case "AUTH_FAIL":
         case "LOGOUT_SUCCESS":
@@ -40,7 +40,7 @@ export default function (state = initial_state, action) {
                 isAuthenticated: false,
                 user: null,
                 isloading: false
-            }
+            };
         default:
             return state
     }

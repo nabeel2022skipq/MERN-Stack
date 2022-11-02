@@ -9,7 +9,7 @@ export default function (state = initial_state, action) {
         case "ADD_POST":
             return {
                 ...state,
-                posts: [...state.posts, action.payload]
+                posts: [action.payload, ...state.posts]
             }
         case "GET_POSTS":
             return {

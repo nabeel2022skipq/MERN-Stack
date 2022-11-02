@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import PropTypes, { func } from 'prop-types'
 
 
+
 const Nav = styled.div`
   background: #15171c;
   height: 80px;
@@ -57,6 +58,7 @@ const Sidebar = (props) => {
           <SidebarWrap>
             <NavIcon className='mb-5'>
               <img id='imagelogo' className='mt-5' src='https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' alt='shop-list' width="50" height="50"></img>
+
             </NavIcon>
 
             {SidebarData.map((item, index) => {

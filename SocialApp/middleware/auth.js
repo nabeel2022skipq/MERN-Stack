@@ -7,7 +7,7 @@ function auth(req, res, next) {
     if (!token) return res.status(401).json({ "ERROR": "Unauthorized User" })
     else {
         try {
-            const decode = jwt.verify(token, config.get("jwtSeceret"))
+            const decode = jwt.verify(token, config.get("JwtSeceret"))
             req.user = decode
             next();
 

@@ -83,6 +83,24 @@ body, html, .App, #root, .auth-wrapper {
   color: black;
 }
 
+input[type="file" i]::-webkit-file-upload-button{
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #28282B;
+  border-color: #03e9f4;
+  color: white;
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+}
+input[type="file" i]::-webkit-file-upload-button:hover{
+  background: #03e9f4;
+  border-color: #03e9f4;
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+  color: black;
+}
 #signup{
   border: 2px solid rgba(0,255,255,0.7);
   background-color: #28282B;

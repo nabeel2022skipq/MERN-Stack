@@ -35,6 +35,7 @@ function SignUp(props) {
         <div className='auth-wrapper'>
             <div className='auth-inner'>
                 <form>
+                    {props.isAuthenticated ? <Alert color='success'>Register Successful! Loading...</Alert> : null}
                     {msgValue ? <Alert color='danger'>{msgValue}</Alert> : null}
                     <h3>Sign Up</h3>
                     <div className="mb-3">
@@ -80,7 +81,7 @@ function SignUp(props) {
 
 SignUp.propTypes = {
     registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.bool,
+    isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired
 }
 

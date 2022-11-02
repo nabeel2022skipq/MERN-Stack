@@ -5,6 +5,7 @@ const api = axios.create({
 });
 
 export const getPosts = () => dispatch => {
+    dispatch(setPostsLoading())
     api.get('/').then(res => dispatch({
         type: "GET_POSTS",
         payload: res.data

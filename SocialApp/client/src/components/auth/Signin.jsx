@@ -42,7 +42,6 @@ function Login(props) {
         <div className='auth-wrapper'>
             <div className='auth-inner'>
                 <form>
-                    {tokenValue ? <Alert color='success'>Login Successful! Loading...</Alert> : null}
                     {msgValue ? <Alert color='danger'>{msgValue}</Alert> : null}
                     <h3>Sign In</h3>
                     <div className="mb-3">

@@ -11,35 +11,36 @@ export const SidebarData = [
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
+
     },
-    {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-    },
+    // {
+    //     title: 'Reports',
+    //     path: '/reports',
+    //     icon: <IoIcons.IoIosPaper />,
+    //     iconClosed: <RiIcons.RiArrowDownSFill />,
+    //     iconOpened: <RiIcons.RiArrowUpSFill />,
+    // },
     {
         title: 'Create Post',
         path: '/create-post',
-        icon: <FaIcons.FaCartPlus />
+        icon: <IoIcons.IoIosCreate />
     },
-    {
-        title: 'Team',
-        path: '/team',
-        icon: <IoIcons.IoMdPeople />
-    },
-    {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
+    // {
+    //     title: 'Team',
+    //     path: '/team',
+    //     icon: <IoIcons.IoMdPeople />
+    // },
+    // {
+    //     title: 'Messages',
+    //     path: '/messages',
+    //     icon: <FaIcons.FaEnvelopeOpenText />,
 
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-    },
+    //     iconClosed: <RiIcons.RiArrowDownSFill />,
+    //     iconOpened: <RiIcons.RiArrowUpSFill />,
+    // },
     {
         title: 'Profile',
         path: '/profile',
-        icon: <IoIcons.IoMdHelpCircle />
+        icon: <FaIcons.FaUserCircle />
     }
 ];

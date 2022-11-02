@@ -10,20 +10,23 @@ import * as SiIcons from 'react-icons/si';
 import './stylesheets/profile.css'
 import Sidebar from './Sidebar/sidebar';
 import RemovePost from './DelPost/RemovePost';
+import Navbar from './navbar';
 function Profile(props) {
 
+    const totalPosts = props.posts.filter(post => post.email === props.user.email)
 
     return (
         <React.Fragment>
+            <Navbar></Navbar>
             <Sidebar></Sidebar>
             <div id="cardprofile">
                 <div id="cardprofile-header">
-                    <img src="https://avatars.githubusercontent.com/u/112900222?v=4" alt="Profile Image" class="profile-img" />
+                    <img src={props.user.image ? props.user.image : "https://gitlab.in2p3.fr/uploads/-/system/user/avatar/530/avatar.png"} alt="Profile Image" class="profile-img" />
                 </div>
                 <div id="cardprofile-body">
-                    <p id="cardprofilename">Your Name</p>
-                    <a href="#" id="cardprofilemail">yourname@amail.com</a>
-                    <p class="job">Developer | Designer</p>
+                    <p id="cardprofilename">{props.user.name}</p>
+                    <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${props.user.email}`} id="cardprofilemail">{props.user.email}</a>
+                    <p class="job">TOTAL POSTS: {totalPosts.length}</p>
                 </div>
 
                 <div class="social-links">
@@ -33,12 +36,12 @@ function Profile(props) {
                 </div>
 
                 <div id="cardprofile-footer">
-                    <p class="count"><span>120k</span> Followers | <span>10k</span> Following</p>
+                    {/* <p class="count"><span>Reactjs |</span> Expressjs | <span>Nodejs |</span> Mongodb</p> */}
                 </div>
             </div>
-            {props.posts.filter(post => post.title.includes('Nabeel Ahmad')).map(post => (
-                <Card border="light" style={{ width: '70rem', marginLeft: "290px", marginTop: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">
-                    <Card.Header>{post.title}</Card.Header>
+            {props.posts.filter(post => post.email.includes(props.user.email)).map(post => (
+                <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginTop: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">
+                    <Card.Header>{post.name}</Card.Header>
                     <Card.Body>
                         <Card.Title>{post.title}</Card.Title>
                         <Card.Text>
@@ -54,15 +57,14 @@ function Profile(props) {
 }
 Profile.protoTypes = {
     posts: PropTypes.array.isRequired,
-    getPosts: PropTypes.func.isRequired
+    getPosts: PropTypes.func.isRequired,
+    user: PropTypes.object
 
-}
-const mapDispatchToProps = {
-    getPosts
 }
 function mapStateToProps(state) {
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        user: state.auth.user
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps)(Profile);

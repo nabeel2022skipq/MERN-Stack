@@ -7,7 +7,8 @@ const config = require('config')
 
 routes.post('/', (req, res) => {
     console.log("POST REQUEST")
-    if (!req.body.name || !req.body.email || !req.body.password) {
+    console.log(req.body)
+    if (!req.body.name || !req.body.email || !req.body.password || !req.body.image) {
         return res.status(400).json({ msg: "Please fill all fields" })
     }
     console.log(req.body)
@@ -27,7 +28,7 @@ routes.post('/', (req, res) => {
                     registerUser(req.body).then(user => {
                         jwt.sign(
                             { id: user._id },
-                            config.get("jwtSeceret"),
+                            config.get("JwtSeceret"),
                             (err, token) => {
                                 if (err) throw err;
                                 res.json({
@@ -36,7 +37,8 @@ routes.post('/', (req, res) => {
                                         "id": user._id,
                                         "name": user.name,
                                         "email": user.email,
-                                        "password": user.password
+                                        "password": user.password,
+                                        "image": user.image
                                     }
                                 })
                             }
