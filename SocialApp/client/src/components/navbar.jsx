@@ -45,7 +45,7 @@ class Example extends React.Component {
         }
         return (
             <div>
-                <Navbar color="secondary" dark expand="sm" style={{ marginLeft: "250px" }}>
+                <Navbar dark expand="sm" style={{ marginLeft: "250px", backgroundColor: "#15171c" }}>
                     <NavbarBrand href="/home"><img id className='m-2' src='https://cdn.pixabay.com/photo/2016/06/16/04/21/twitter-1460609_960_720.png' alt='shop-list' width="50" height="50"></img>Social Links</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -57,7 +57,7 @@ class Example extends React.Component {
                                 <NavLink href="https://github.com/nabeel2022skipq">GitHub</NavLink>
                             </NavItem>
                             <NavItem>
-                                {this.props.isAuthenticated ? <NavLink style={{ "fontWeight": "bold", color: "#28282B", fontSize: "large" }}>Total Posts: {this.props.posts.filter(post => post.email === this.props.user.email).length}</NavLink> : null}
+                                {this.props.isAuthenticated ? <NavLink>Total Posts: {this.props.posts.filter(post => post.email === this.props.user.email).length}</NavLink> : null}
                             </NavItem>
                         </Nav>
                         <Nav className='ms-auto' navbar>

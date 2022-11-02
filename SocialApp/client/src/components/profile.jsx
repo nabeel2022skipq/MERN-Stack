@@ -11,6 +11,7 @@ import './stylesheets/profile.css'
 import Sidebar from './Sidebar/sidebar';
 import RemovePost from './DelPost/RemovePost';
 import Navbar from './navbar';
+import Footer from './Footer';
 function Profile(props) {
 
     const totalPosts = props.posts.filter(post => post.email === props.user.email)
@@ -40,18 +41,30 @@ function Profile(props) {
                 </div>
             </div>
             {props.posts.filter(post => post.email.includes(props.user.email)).map(post => (
-                <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginTop: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">
-                    <Card.Header>{post.name}</Card.Header>
+                <Card border='light' style={{ marginLeft: "260px", marginRight: "5px", boxShadow: "0 15px 25px rgba(0,0,0,.6)", marginBottom: "1rem" }} className="bg-dark text-white text-left">
+                    <Card.Header as="h5" style={{ color: "rgba(0,255,255,0.7)" }}>{post.name}</Card.Header>
                     <Card.Body>
-                        <Card.Title>{post.title}</Card.Title>
-                        <Card.Text>
+                        <Card.Title >{post.title}</Card.Title>
+                        <Card.Text >
                             {post.description}
                         </Card.Text>
-                        {/* <a href="#" class="btn btn-outline-info">Delete Post</a> */}
                         <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost>
                     </Card.Body>
                 </Card>
+                // <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginBottom: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">
+                //     <Card.Header>{post.name}</Card.Header>
+                //     <Card.Body>
+                //         <Card.Title>{post.title}</Card.Title>
+                //         <Card.Text>
+                //             {post.description}
+                //         </Card.Text>
+                //         {/* <a href="#" class="btn btn-outline-info">Delete Post</a> */}
+                //         <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost>
+                //     </Card.Body>
+                // </Card>
             ))}
+            <br></br>
+            <Footer></Footer>
         </React.Fragment>
     );
 }

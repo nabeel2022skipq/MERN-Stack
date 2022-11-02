@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { removePost } from '../../actions/postActions'
 import PropTypes, { func } from 'prop-types'
+import * as RiIcons from 'react-icons/ri'
+
 function RemoveData(props) {
 
     let newpost = props.postdel
@@ -13,7 +15,7 @@ function RemoveData(props) {
         props.removePost(postdeleting)
     }
     return (
-        <button class="btn btn-outline-info" onClick={delPost}>Delete Post</button>
+        <button class="btn btn-outline-info" onClick={delPost}><RiIcons.RiChatDeleteFill></RiIcons.RiChatDeleteFill>&nbsp;Delete Post</button>
     );
 }
 RemoveData.propTypes = {

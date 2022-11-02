@@ -11,3 +11,15 @@ body{
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
+#posttitle{
+    transition: 0.3s font-size;
+}
+#posttitle:hover{
+    font-size: 1.5rem;
+}
+#badgecount{
+    transition: 0.3s font-size;
+}
+#badgecount:hover{
+    font-size: 1rem;
+}

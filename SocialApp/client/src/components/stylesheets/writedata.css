@@ -222,6 +222,7 @@ p {
 }
 .card-container {
   margin-top: 10px;
+  margin-bottom: 50px;
   margin-left: 260px;
   background-color:rgba(0,0,0,.5);
   border-radius: 5px;

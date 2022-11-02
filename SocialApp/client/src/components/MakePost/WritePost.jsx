@@ -10,6 +10,7 @@ import { UncontrolledAlert } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar/sidebar';
 import Navbar from '../navbar';
+import Footer from '../Footer';
 function WritePost(props) {
     const [item, setItem] = useState({ title: '', image: '' });
     const [title, setTitle] = useState("")
@@ -45,7 +46,7 @@ function WritePost(props) {
                             <input type="text" name="description" placeholder='Write something to make a post' onChange={e => setDesc(e.target.value)} />
                             <label>Write Something...</label>
                         </div>
-                        {!props.token ? <UncontrolledAlert color='info'>Login or Signup to perform CRUD operation</UncontrolledAlert> :
+                        {!props.isAuthenticated ? <UncontrolledAlert color='info'>Login or Signup to perform CRUD operation</UncontrolledAlert> :
                             <a href="#" onClick={writePosts}>
                                 <span></span>
                                 <span></span>
@@ -57,6 +58,7 @@ function WritePost(props) {
                     </form>
                 </div>
             </div>
+
         </React.Fragment>
 
 
