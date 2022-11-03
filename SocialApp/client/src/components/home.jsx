@@ -33,7 +33,7 @@ function Home(props) {
                         <Card.Text id="postdesc">
                             {post.description}
                         </Card.Text>
-                        {props.isAuthenticated && post.email === props.user.email ? <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost> : null}
+                        {props.isAuthenticated && post.email === props.user.email ? <RemovePost postdel={post._id}></RemovePost> : null}
                     </Card.Body>
                 </Card>
                 // <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginTop: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">

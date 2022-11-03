@@ -7,9 +7,9 @@ import * as RiIcons from 'react-icons/ri'
 function RemoveData(props) {
 
     let newpost = props.postdel
-    let titl = newpost.title
-    let desc = newpost.description
-    let postdeleting = { "title": titl, "description": desc }
+    // let titl = newpost.title
+    // let desc = newpost.description
+    let postdeleting = { "id": newpost }
     function delPost() {
         console.log(postdeleting)
         props.removePost(postdeleting)

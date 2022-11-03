@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const config = require('config')
 
 async function getdb() {
@@ -29,15 +29,16 @@ async function createdb(newpost) {
 }
 
 async function deletedb(oldpost) {
+    console.log(`object id or id ${oldpost["id"]}`)
     console.log("Deleting Item from the Database")
     const uri = config.get('mongoDBURI');
     const client = new MongoClient(uri);
     try {
         await client.connect();
-        const filterdocs = await client.db("PostsList").collection("posts").find({ "title": oldpost["title"], "description": oldpost["description"] }).toArray();
+        const filterdocs = await client.db("PostsList").collection("posts").find({ "_id": ObjectId(oldpost["id"]) }).toArray();
         if (filterdocs.length > 0) {
             console.log("Present in database")
-            await client.db("PostsList").collection("posts").deleteOne({ "title": oldpost["title"], "description": oldpost["description"] })
+            await client.db("PostsList").collection("posts").deleteOne({ "_id": ObjectId(oldpost["id"]) })
         }
         else {
             console.log("Item not exist in database")

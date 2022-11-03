@@ -48,7 +48,7 @@ function Profile(props) {
                         <Card.Text >
                             {post.description}
                         </Card.Text>
-                        <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost>
+                        <RemovePost postdel={post._id}></RemovePost>
                     </Card.Body>
                 </Card>
                 // <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginBottom: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">

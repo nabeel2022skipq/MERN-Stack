@@ -20,7 +20,7 @@ export default function (state = initial_state, action) {
         case "DEL_POST":
             return {
                 ...state,
-                posts: state.posts.filter(post => post.description !== action.payload.description)
+                posts: state.posts.filter(post => post._id !== action.payload.id)
             }
         case "SET_POSTS_LOADING":
             return {
