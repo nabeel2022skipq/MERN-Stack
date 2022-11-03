@@ -1,18 +1,19 @@
 import axios from "axios"
+import { returnErrors } from "./errorActions";
 const api = axios.create({
-    baseURL: "http://localhost:5000/api/posts",
+    // baseURL: "http://localhost:5000/api/posts",
 
 });
 
 export const getPosts = () => dispatch => {
     dispatch(setPostsLoading())
-    api.get('/').then(res => dispatch({
+    api.get('/api/posts').then(res => dispatch({
         type: "GET_POSTS",
         payload: res.data
     }))
 }
 export const insertPost = (newpost) => dispatch => {
-    api.post('/', newpost).then(res => dispatch({
+    api.post('/api/posts', newpost).then(res => dispatch({
         type: "ADD_POST",
         payload: newpost
     }))
@@ -25,10 +26,21 @@ export const removePost = (newpost) => dispatch => {
         },
         data: newpost,
     }
-    api.delete('/', config).then(res => dispatch({
+    api.delete('/api/posts', config).then(res => dispatch({
         type: "DEL_POST",
         payload: newpost
     }))
+}
+
+export const updatePost = (oldpost) => dispatch => {
+    api.put('/api/posts', oldpost).then(res => dispatch({
+        type: "UPDATE_POST",
+        payload: oldpost
+
+    })).catch(err => {
+        dispatch(returnErrors(err.response.msg, err.response.status))
+
+    })
 }
 
 

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/authActions';
+import * as FaIcons from 'react-icons/fa';
+import * as SiIcons from 'react-icons/si';
 import { Navigate } from 'react-router-dom';
 import {
     Collapse,
@@ -46,18 +48,21 @@ class Example extends React.Component {
         return (
             <div>
                 <Navbar dark expand="sm" style={{ marginLeft: "250px", backgroundColor: "#15171c" }}>
-                    <NavbarBrand href="/home"><img id className='m-2' src='https://cdn.pixabay.com/photo/2016/06/16/04/21/twitter-1460609_960_720.png' alt='shop-list' width="50" height="50"></img>Social Links</NavbarBrand>
+                    <NavbarBrand className='text-info ' style={{ fontWeight: "bold" }} href="/home"><img id className='m-2' src='https://cdn.pixabay.com/photo/2016/06/16/04/21/twitter-1460609_960_720.png' alt='shop-list' width="50" height="50"></img>Happn!</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://www.linkedin.com/in/nabeel-ahmad-2843a724b/">Linkedin</NavLink>
+                                <NavLink href="https://www.linkedin.com/in/nabeel-ahmad-2843a724b/"><FaIcons.FaLinkedin ></FaIcons.FaLinkedin>&nbsp;Linkedin</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/nabeel2022skipq">GitHub</NavLink>
+                                <NavLink href="https://github.com/nabeel2022skipq"><FaIcons.FaGithub></FaIcons.FaGithub>&nbsp; GitHub</NavLink>
                             </NavItem>
                             <NavItem>
-                                {this.props.isAuthenticated ? <NavLink>Total Posts: {this.props.posts.filter(post => post.email === this.props.user.email).length}</NavLink> : null}
+                                <NavLink href="https://github.com/nabeel2022skipq"><SiIcons.SiLeetcode></SiIcons.SiLeetcode> &nbsp;Leetcode</NavLink>
+                            </NavItem>
+                            <NavItem >
+                                {this.props.isAuthenticated ? <NavLink className='text-info' style={{ fontWeight: "bold" }}>Total Posts: {this.props.posts.filter(post => post.email === this.props.user.email).length}</NavLink> : null}
                             </NavItem>
                         </Nav>
                         <Nav className='ms-auto' navbar>

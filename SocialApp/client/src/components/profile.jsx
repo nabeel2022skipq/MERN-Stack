@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
-import { getPosts } from '../actions/postActions';
 import PropTypes from 'prop-types'
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
@@ -12,6 +11,7 @@ import Sidebar from './Sidebar/sidebar';
 import RemovePost from './DelPost/RemovePost';
 import Navbar from './navbar';
 import Footer from './Footer';
+import UpdatePost from './UpdatePost/UpdatePost';
 function Profile(props) {
 
     const totalPosts = props.posts.filter(post => post.email === props.user.email)
@@ -40,6 +40,8 @@ function Profile(props) {
                     {/* <p class="count"><span>Reactjs |</span> Expressjs | <span>Nodejs |</span> Mongodb</p> */}
                 </div>
             </div>
+            <br></br>
+            <h1 className=' text-center text-black mb-4 display-5' style={{ marginLeft: "250px", webkitTextStroke: "1px rgba(0,255,255,0.7)" }}>Your Posts</h1>
             {props.posts.filter(post => post.email.includes(props.user.email)).map(post => (
                 <Card border='light' style={{ marginLeft: "260px", marginRight: "5px", boxShadow: "0 15px 25px rgba(0,0,0,.6)", marginBottom: "1rem" }} className="bg-dark text-white text-left">
                     <Card.Header as="h5" style={{ color: "rgba(0,255,255,0.7)" }}>{post.name}</Card.Header>
@@ -49,19 +51,9 @@ function Profile(props) {
                             {post.description}
                         </Card.Text>
                         <RemovePost postdel={post._id}></RemovePost>
+                        <UpdatePost postupdate={{ "id": post._id, "title": post.title, "description": post.description }}></UpdatePost>
                     </Card.Body>
                 </Card>
-                // <Card border="light" style={{ width: '70rem', marginLeft: "330px", marginBottom: "1rem", boxShadow: "0 15px 25px rgba(0,0,0,.6)" }} className="bg-dark text-white text-left">
-                //     <Card.Header>{post.name}</Card.Header>
-                //     <Card.Body>
-                //         <Card.Title>{post.title}</Card.Title>
-                //         <Card.Text>
-                //             {post.description}
-                //         </Card.Text>
-                //         {/* <a href="#" class="btn btn-outline-info">Delete Post</a> */}
-                //         <RemovePost postdel={{ "title": post.title, "description": post.description }}></RemovePost>
-                //     </Card.Body>
-                // </Card>
             ))}
             <br></br>
             <Footer></Footer>
@@ -74,6 +66,7 @@ Profile.protoTypes = {
     user: PropTypes.object
 
 }
+
 function mapStateToProps(state) {
     return {
         posts: state.post.posts,

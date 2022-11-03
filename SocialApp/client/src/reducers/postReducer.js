@@ -22,6 +22,19 @@ export default function (state = initial_state, action) {
                 ...state,
                 posts: state.posts.filter(post => post._id !== action.payload.id)
             }
+        case "UPDATE_POST":
+            for (let i = 0; i < state.posts.length; i++) {
+                if (state.posts[i]._id === action.payload.id) {
+                    state.posts[i].title = action.payload.updateTitle;
+                    state.posts[i].description = action.payload.updateDescription;
+                    break; //Stop this loop, we found it!
+                }
+
+            }
+            return {
+                ...state,
+                posts: state.posts
+            }
         case "SET_POSTS_LOADING":
             return {
                 ...state,

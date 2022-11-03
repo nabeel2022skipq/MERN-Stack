@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
@@ -32,11 +33,11 @@ function CreateData(props) {
                 Post
             </button> : null}
 
-            <Modal show={show} onHide={handleClose} >
-                <Modal.Header style={{ background: "#28282B" }}>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header className="border border-info " style={{ background: "#28282B" }}>
                     <Modal.Title style={{ color: "#03e9f4" }}>Create New Post</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ background: "#28282B" }}>
+                <Modal.Body className="border border-info" style={{ background: "#28282B" }}>
                     <Form>
                         <Form.Group className="mt-3">
                             <Form.Label style={{ color: "#03e9f4" }}>Add Title</Form.Label>
@@ -49,7 +50,7 @@ function CreateData(props) {
 
                         </Form.Group>
                         <Form.Group className="mt-3">
-                            <Form.Label style={{ color: "#03e9f4" }}>Type Something to Post</Form.Label>
+                            <Form.Label style={{ color: "#03e9f4" }}>Add Description</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Type something..."

@@ -221,7 +221,7 @@ p {
   transition: all .3s;
 }
 .card-container {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 50px;
   margin-left: 260px;
   background-color:rgba(0,0,0,.5);

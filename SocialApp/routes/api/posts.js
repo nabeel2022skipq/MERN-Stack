@@ -1,5 +1,5 @@
 const express = require('express');
-const { createdb, getdb, deletedb } = require('../../posts_mongodb');
+const { createdb, getdb, deletedb, updatedb } = require('../../posts_mongodb');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
@@ -35,16 +35,17 @@ routes.delete('/', (req, res) => {
 
 })
 
-// routes.put('/', (req, res) => {
-//     console.log(req.body)
-//     updatedb(req.body).then(result => {
-//         if (result === true) {
-//             res.send(`Item updated from ${req.body.product} to ${req.body.updateproduct}.`)
-//         }
-//         else {
-//             res.send(`${req.body.product} does not exist in the database.`)
-//         }
-//     })
-// })
+routes.put('/', (req, res) => {
+    console.log(req.body)
+    updatedb(req.body).then(result => {
+        if (result === true) {
+            console.log("Item updated in databases")
+            res.send(`Item updated from ${req.body.product} to ${req.body.updateproduct}.`)
+        }
+        else {
+            res.send(`${req.body.product} does not exist in the database.`)
+        }
+    })
+})
 
 module.exports = routes

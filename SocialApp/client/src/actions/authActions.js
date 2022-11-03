@@ -1,7 +1,7 @@
 import axios from "axios"
 import { returnError, returnErrors } from "./errorActions";
 const api = axios.create({
-    baseURL: "http://localhost:5000/api/users",
+    // baseURL: "http://localhost:5000/api/users",
     header: {
         "Access-Control-Allow-Origin": "*"
     },
@@ -9,7 +9,7 @@ const api = axios.create({
 
 export const registerUser = (user) => async dispatch => {
 
-    api.post('/', user).then(result => dispatch({
+    api.post('/api/users', user).then(result => dispatch({
         type: "REGISTER_SUCCESS",
         payload: result.data
     }))
@@ -22,7 +22,7 @@ export const registerUser = (user) => async dispatch => {
 }
 
 export const loginUser = (user) => async dispatch => {
-    api.post('/auth', user).then(result => dispatch({
+    api.post('api/users/auth', user).then(result => dispatch({
         type: "LOGIN_SUCCESS",
         payload: result.data
     }))
@@ -57,7 +57,7 @@ export const loadUser = () => (dispatch, getState) => {
         config.headers['x-auth-token'] = token;
     }
     console.log(config)
-    api.get('/auth/user', config).then(result => dispatch({
+    api.get('api/users/auth/user', config).then(result => dispatch({
         type: "USER_LOADED",
         payload: result.data
     }))

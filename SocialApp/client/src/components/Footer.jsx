@@ -14,7 +14,7 @@ function Footer() {
                                 <p>Your one-stop career platform to find Jobs, Internships, Professional Trainings, Projects, and Volunteering Opportunities.</p>
                             </div>
                             <div class="col-md-2 col-sm-6">
-                                <h3>Quick  LInks</h3>
+                                <h3 className='text-info'>Quick  LInks</h3>
                                 <ul class="footer-links">
                                     <li><a href="#">Home</a>
                                     </li>
@@ -33,7 +33,7 @@ function Footer() {
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <h3>OUR SERVICES</h3>
+                                <h3 className='text-info'>OUR SERVICES</h3>
                                 <ul class="footer-category">
                                     <li><a href="#">Fresher Jobs</a>
                                     </li>
@@ -49,7 +49,7 @@ function Footer() {
                                 <div class="clearfix"></div>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <h3>triedge Events</h3>
+                                <h3 className='text-info'>triedge Events</h3>
                                 <ul class="footer-links">
                                     <li><a href="#">Triedge Events</a>
                                     </li>
