@@ -1,7 +1,7 @@
 import React from 'react';
 function Team() {
     return (
-        <div className="mt-20">
+        <div className="mt-20" id='team'>
             <div>
                 <div className='flex justify-center items-center space-x-5 mt-16 font-mono select-none'>
                     <div className='bg-purple-500 w-20 h-1'></div>

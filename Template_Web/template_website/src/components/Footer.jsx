@@ -8,8 +8,8 @@ function Footer() {
             </div>
             <div className='grid grid-cols-2 lg:grid-cols-4'>
                 <div className='px-10 py-3'>
-                    <h3 className='text-2xl font-bold text-gray-400 mb-4'>Contact Us</h3>
-                    <ul className='text-gray-300 text-sm'>
+                    <h3 className='text-2xl font-bold text-gray-400 mb-4'>Useful Links</h3>
+                    <ul className='text-gray-400 text-sm'>
                         <li>The</li>
                         <li>Quick</li>
                         <li>Brown</li>
@@ -20,7 +20,7 @@ function Footer() {
                 </div>
                 <div className='px-10 py-3'>
                     <h3 className='text-2xl font-bold text-gray-400 mb-4'>FAQ's</h3>
-                    <ul className='text-gray-300 text-sm'>
+                    <ul className='text-gray-400 text-sm'>
                         <li>The</li>
                         <li>Quick</li>
                         <li>Brown</li>
@@ -31,7 +31,7 @@ function Footer() {
                 </div>
                 <div className='px-10 py-2'>
                     <h3 className='text-2xl font-bold text-gray-400 mb-4'>Pricing</h3>
-                    <ul className='text-gray-300 text-sm'>
+                    <ul className='text-gray-400 text-sm'>
                         <li>The</li>
                         <li>Quick</li>
                         <li>Brown</li>
@@ -42,7 +42,7 @@ function Footer() {
                 </div>
                 <div className='px-10 py-3'>
                     <h3 className='text-2xl font-bold text-gray-400 mb-4'>About Us</h3>
-                    <ul className='text-gray-300 text-sm'>
+                    <ul className='text-gray-400 text-sm'>
                         <li>The</li>
                         <li>Quick</li>
                         <li>Brown</li>
