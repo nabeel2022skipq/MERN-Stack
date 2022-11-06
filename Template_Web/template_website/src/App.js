@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import ResNav from './components/ResponsiceNav';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <ResNav></ResNav>
+      <Home></Home>
     </div>
   );
 }
