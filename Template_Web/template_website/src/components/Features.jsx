@@ -3,7 +3,7 @@ import { Fade } from 'react-awesome-reveal';
 function Features() {
     return (
         <div id='features'>
-            <div className='flex justify-center items-center space-x-5 mt-16 font-mono select-none'>
+            <div className='flex justify-center items-center space-x-5 mt-32 font-mono select-none'>
                 <div className='bg-purple-500 w-20 h-1'></div>
                 <h1 className='text-gray-500 text-4xl uppercase font-extrabold transform hover:text-white hover:scale-110 transition ease-in-out duration-500'>Features</h1>
                 <div className='bg-purple-500 w-20 h-1'></div>

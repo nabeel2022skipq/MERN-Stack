@@ -3,7 +3,7 @@ import { Fade } from 'react-awesome-reveal';
 function SubServices() {
     return (
         <React.Fragment>
-            <div className='mt-20'>
+            <div className='mt-20' id='moreservices'>
                 <div className='grid lg:grid-cols-2 gap-y-4 lg:gap-x-6 px-10 cursor-pointer select-none'>
 
                     <Fade cascade damping={0.1} triggerOnce>

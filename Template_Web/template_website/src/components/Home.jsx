@@ -15,6 +15,9 @@ import { Hinge } from "react-awesome-reveal";
 import { JackInTheBox } from "react-awesome-reveal";
 import { Roll } from "react-awesome-reveal";
 import { Rotate } from "react-awesome-reveal";
+import Pricing from './Pricing';
+import FAQ from './FAQ';
+import ContactUs from './ContactUs';
 function Home() {
     return (
         <React.Fragment>
@@ -26,6 +29,9 @@ function Home() {
             <Fade><SubServices></SubServices></Fade>
             <Features></Features>
             <Slide triggerOnce><Team></Team></Slide>
+            <Pricing></Pricing>
+            <FAQ></FAQ>
+            <ContactUs></ContactUs>
             <Footer></Footer>
         </React.Fragment>
     );

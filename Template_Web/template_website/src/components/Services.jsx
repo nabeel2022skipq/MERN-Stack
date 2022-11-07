@@ -3,7 +3,7 @@ import { Fade } from 'react-awesome-reveal';
 function Services() {
     return (
         <React.Fragment>
-            <div id='services'>
+            <div id='services' className='mt-32'>
                 <div className='space-y-9'>
                     <div>
                         <div className='flex justify-center items-center space-x-5 mt-16 font-mono select-none'>

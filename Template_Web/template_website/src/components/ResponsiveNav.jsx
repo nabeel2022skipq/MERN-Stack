@@ -49,15 +49,15 @@ function ResNav() {
                                     <ul className="text-sm text-gray-400">
                                         <AnchorLink href='#features'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Features</li></AnchorLink>
                                         <li className="px-4 py-2 hover:bg-gray-600 hover:text-white flex justify-between items-center" onClick={handeSubDropDown}>Read More<svg aria-hidden="true" className={`inline-block text-right w-4 h-4 ${subrotate}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg></li>
-                                        <li className="px-4 py-2 hover:bg-gray-600 hover:text-white">FAQ's</li>
+                                        <AnchorLink href='#faqs'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">FAQ's</li></AnchorLink>
                                         <li className="border-t border-t-gray-600 px-4 py-2 hover:bg-gray-600 hover:text-white">Sign out</li>
                                     </ul>
                                 </div>
                                 <div className={`absolute left-28 mx-1 mt-10 w-48 overflow-hidden rounded-md bg-gray-700 shadow-md ${showsubdropdown}`}>
                                     <ul className="text-sm text-gray-400">
-                                        <li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Overview</li>
-                                        <li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Downloads</li>
-                                        <li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Billing</li>
+                                        <AnchorLink href='#contactus'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Contact Us</li></AnchorLink>
+                                        <AnchorLink href='#moreservices'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">More Services</li></AnchorLink>
+                                        <AnchorLink href='#pricing'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Pricing</li></AnchorLink>
                                         <AnchorLink href='#team'><li className="px-4 py-2 hover:bg-gray-600 hover:text-white">Team</li></AnchorLink>
                                     </ul>
                                 </div>

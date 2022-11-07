@@ -3,7 +3,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 function Header() {
     return (
         <React.Fragment>
-            <div className='mt-36'>
+            <div className='mt-40'>
                 <div className='grid md:grid-cols-2'>
 
                     <Fade duration={3000} triggerOnce>
