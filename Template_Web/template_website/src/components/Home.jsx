@@ -8,6 +8,13 @@ import ResNav from './ResponsiveNav';
 import Services from './Services';
 import SubServices from './SubServices';
 import Team from './Team';
+import { Fade } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
+import { Flip } from "react-awesome-reveal";
+import { Hinge } from "react-awesome-reveal";
+import { JackInTheBox } from "react-awesome-reveal";
+import { Roll } from "react-awesome-reveal";
+import { Rotate } from "react-awesome-reveal";
 function Home() {
     return (
         <React.Fragment>
@@ -16,9 +23,9 @@ function Home() {
             <AboutUs></AboutUs>
             <Feedback></Feedback>
             <Services></Services>
-            <SubServices></SubServices>
+            <Fade><SubServices></SubServices></Fade>
             <Features></Features>
-            <Team></Team>
+            <Slide triggerOnce><Team></Team></Slide>
             <Footer></Footer>
         </React.Fragment>
     );
