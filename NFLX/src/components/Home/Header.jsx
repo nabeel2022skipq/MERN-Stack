@@ -17,7 +17,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         if (movieidx < movies.length - 1) {
             setMovieIdx(movieidx + 1)
@@ -41,7 +41,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         if (movieidx === 0) {
             setMovieIdx(movies.length - 1)
@@ -76,7 +76,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         setMovieIdx(0)
         if (isPlaying) {
@@ -90,7 +90,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         setMovieIdx(1)
         if (isPlaying) {
@@ -104,7 +104,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         setMovieIdx(2)
         if (isPlaying) {
@@ -118,7 +118,7 @@ function Header() {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         });
         setMovieIdx(3)
         if (isPlaying) {
