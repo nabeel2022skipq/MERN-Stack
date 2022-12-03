@@ -14,8 +14,28 @@ module.exports = {
         }
       },
       animation: {
-        'fade-in-down': 'fade-in-down 2s infinite  alternate'
-      }
+        'fade-in-down': '6s ease-in-out infinite alternate moving'
+      },
+      keyframes: {
+        'typing': {
+          '0%': {
+            width: 0
+          },
+          '50%': {
+            borderRight: "2px solid purple"
+          },
+          '90%': {
+            borderRight: "2px solid purple"
+          },
+          '100%': {
+            width: ("100%"),
+            borderRight: ("0px")
+          }
+        }
+      },
+      animation: {
+        'typing': 'typing 5s forwards'
+      },
     },
   },
   plugins: [],

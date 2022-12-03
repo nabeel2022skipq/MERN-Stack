@@ -18,7 +18,7 @@ function Header() {
                         <Fade duration={2000} cascade damping={0.1} triggerOnce>
                             <div className='mx-10 mt-10 space-y-5 md:px-0 select-none cursor-pointer'>
 
-                                <h1 className='text-4xl md:text-5xl font-bold font-serif text-white'>Grow Your Business with Vesperr</h1>
+                                <h1 className='text-4xl md:text-5xl font-bold font-serif text-white '>Grow Your Business with <div className='inline-block mt-3'><h1 className=' overflow-hidden w-0 whitespace-nowrap animate-typing'>MERN STACK</h1></div></h1>
                                 <p className='text-gray-500 text-xl md:text-2xl hover:text-gray-400'>We are team of talented designers making websites <br></br>with <b className='hover:text-purple-500'>MERN Stack</b></p>
                             </div>
                             <div className='p-10 select-none cursor-pointer'>

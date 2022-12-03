@@ -1,7 +1,7 @@
 import axios from "axios"
 import { returnError, returnErrors } from "./errorActions";
 const api = axios.create({
-    // baseURL: "http://localhost:5000/api/users",
+    baseURL: "http://localhost:5000/",
     header: {
         "Access-Control-Allow-Origin": "*"
     },
