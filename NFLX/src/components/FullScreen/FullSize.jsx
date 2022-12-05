@@ -17,6 +17,9 @@ function FullScreenVideo() {
     return (
         <React.Fragment>
             <div className='relative'>
+                <div className={`${isPlaying ? "block bg-white bg-opacity-30 hover:bg-opacity-40" : "hidden"}`}>
+                    <ResNav></ResNav>
+                </div>
                 {isPlaying ?
 
                     <div>
@@ -58,7 +61,7 @@ function FullScreenVideo() {
                         </div>
                     </div>
                 }
-                <div className='absolute top-0 left-0 w-full'>
+                <div className={`${isPlaying ? "hidden" : "absolute top-0 left-0 w-full"}`}>
                     <ResNav></ResNav>
                 </div>
             </div>

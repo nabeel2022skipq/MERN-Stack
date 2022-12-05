@@ -1,6 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FileBase64 from 'react-file-base64';
+import './stylesheet/signup.css'
 function Signup() {
+
+    function validateFields(e) {
+        let finalresult;
+
+        //Name validation
+        if (document.getElementById('nameText').value !== "") {
+            e.preventDefault();
+            document.getElementById('nameHelp').innerHTML = "";
+            finalresult = true;
+        }
+        else {
+            e.preventDefault();
+            document.getElementById('nameHelp').innerText = "Please enter your Name"
+            finalresult = false;
+        }
+
+        //Email validation
+        if (document.getElementById('emailText').value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            e.preventDefault();
+            document.getElementById('emailHelp').innerHTML = "";
+            finalresult = true;
+        }
+        else {
+            e.preventDefault();
+            document.getElementById('emailHelp').innerText = "Please enter valid email"
+            finalresult = false;
+        }
+
+        //Password Validation
+        if (document.getElementById('passwordText').value.length >= 8) {
+            e.preventDefault();
+            document.getElementById('passwordHelp').innerHTML = "";
+            finalresult = true;
+        }
+        else {
+            e.preventDefault();
+            document.getElementById('passwordHelp').innerText = "Password should be 8 characters long."
+            finalresult = false;
+        }
+
+        if (finalresult === true) {
+            console.log("Form validated")
+        }
+    }
     return (
         <div className='relative'>
             <div>
@@ -24,14 +70,30 @@ function Signup() {
 
                     {/* Form */}
                     <div className='space-y-6'>
-                        <input type='text' placeholder='Your Name' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
-                        <input type='text' placeholder='E-Mail' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
-                        <input type='text' placeholder='Password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
-                        <input type='text' placeholder='Repeat password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                        <input type='text' id='nameText' placeholder='Your Name' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                        <small id="nameHelp" className="text-red-500 font-semibold"></small>
+
+                        <input type='text' id='emailText' placeholder='E-Mail' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                        <small id="emailHelp" className="text-red-500 font-semibold"></small>
+
+                        <input type='text' id='passwordText' placeholder='Password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                        <small id="passwordHelp" className="text-red-500 font-semibold"></small>
+
+                        <div className='flex justify-between items-center px-3 py-3 rounded-md shadow-xl' style={{ backgroundColor: "#333333" }}>
+                            <label className='hidden lg:block' style={{ color: "#9CA3A3" }}>Attch Image</label>
+                            <FileBase64
+                                type="file"
+                                multiple={false}
+                                isRequired
+                                className="shadow-xl rounded-md py-4 px-3 w-full text-white"
+                            // onDone={({ base64 }) => setItem({ image: base64 })}
+                            />
+                        </div>
+
                     </div>
 
                     {/* Submit Button */}
-                    <div><button type='button' className='shadow-xl rounded-md py-4 px-3 w-full bg-red-600 text-white'>Sign Up</button></div>
+                    <div><button type='button' className='shadow-xl rounded-md py-4 px-3 w-full bg-red-600 text-white' onClick={validateFields}>Sign Up</button></div>
 
                     {/* Footer */}
                     <div className='px-5'><hr></hr></div>

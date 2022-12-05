@@ -3,6 +3,7 @@ import Signup from "./components/Auth/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
 import FullScreenVideo from "./components/FullScreen/FullSize";
+import MyList from "./components/Library/MyList";
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
           <Route exact path='/sign-in' element={<Signin></Signin>}></Route>
           <Route exact path='/home' element={<HomePage></HomePage>}></Route>
           <Route exact path='/full-screen' element={<FullScreenVideo></FullScreenVideo>}></Route>
+          <Route exact path='/my-list' element={<MyList></MyList>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

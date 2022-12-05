@@ -2,6 +2,39 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 function Signin() {
+
+    function validateFields(e) {
+        let finalresult;
+
+
+        //Email validation
+        if (document.getElementById('signinemailText').value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            e.preventDefault();
+            document.getElementById('signinemailHelp').innerHTML = "";
+            finalresult = true;
+        }
+        else {
+            e.preventDefault();
+            document.getElementById('signinemailHelp').innerText = "Please enter valid email"
+            finalresult = false;
+        }
+
+        //Password Validation
+        if (document.getElementById('signinpasswordText').value.length >= 8) {
+            e.preventDefault();
+            document.getElementById('singinpasswordHelp').innerHTML = "";
+            finalresult = true;
+        }
+        else {
+            e.preventDefault();
+            document.getElementById('singinpasswordHelp').innerText = "Password should be 8 characters long."
+            finalresult = false;
+        }
+
+        if (finalresult === true) {
+            console.log("Form validated")
+        }
+    }
     return (
         <React.Fragment>
             <div className='relative'>
@@ -26,13 +59,16 @@ function Signin() {
 
                         {/* Form */}
                         <div className='space-y-6'>
-                            <input type='text' placeholder='E-Mail' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
-                            <input type='text' placeholder='Password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                            <input type='text' id='signinemailText' placeholder='E-Mail' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                            <small id="signinemailHelp" className="text-red-500 font-semibold"></small>
+
+                            <input type='text' id='signinpasswordText' placeholder='Password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                            <small id="singinpasswordHelp" className="text-red-500 font-semibold"></small>
                         </div>
 
                         {/* Submit Button */}
                         <div className='space-y-3'>
-                            <Link to="/home"><button type='button' className='shadow-xl rounded-md py-4 px-3 w-full bg-red-600 text-white'>Sign In</button></Link>
+                            <Link ><button type='button' className='shadow-xl rounded-md py-4 px-3 w-full bg-red-600 text-white' onClick={validateFields}>Sign In</button></Link>
                             <button type='button' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#1458C7" }}><div className='flex items-center justify-center space-x-2'><FcGoogle className='transform scale-150'></FcGoogle><p className='hidden sm:block'>Sign In with Google</p></div></button>
                         </div>
 
