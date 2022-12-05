@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
+import ResNav from '../Navbar/ResponsiveNav';
 import VideoAbout from './VideoAbout';
 
 function FullScreenVideo() {
@@ -15,11 +16,11 @@ function FullScreenVideo() {
 
     return (
         <React.Fragment>
-            <div>
+            <div className='relative'>
                 {isPlaying ?
 
                     <div>
-                        <iframe className='w-full h-screen'
+                        <iframe className='w-full h-screen' title={currentVideo.title}
                             src={`https://www.youtube.com/embed/${currentVideo.id}?autoplay=1`} allowFullScreen>
                         </iframe>
                     </div>
@@ -57,6 +58,9 @@ function FullScreenVideo() {
                         </div>
                     </div>
                 }
+                <div className='absolute top-0 left-0 w-full'>
+                    <ResNav></ResNav>
+                </div>
             </div>
         </React.Fragment>
     );
