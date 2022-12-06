@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai'
 import * as MdIcons from 'react-icons/md'
 import * as CgIcons from 'react-icons/cg'
-function ResNav() {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import Logout from '../Auth/Logout';
+function ResNav(props) {
     const [show, setShow] = useState("hidden")
     const [rotate, setRotate] = useState("rotate-0")
     const [showsubdropdown, setShowSubDropDown] = useState("hidden")
@@ -82,7 +85,7 @@ function ResNav() {
                             <Link to='/my-list'><li className="p-5 hover:text-white">Home</li></Link>
                             <div className="relative">
                                 <li className="py-5 px-3 hover:text-white" onClick={handeDropDown}>Dropdown<svg className={`inline-block w-4 h-4 ${rotate}`} aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg></li>
-                                <div className={`absolute right-0 mt-1 w-48 bg-black bg-opacity-40 overflow-hidden rounded-md shadow-md ${show}`}>
+                                <div className={`absolute right-0 mt-1 w-48 bg-black bg-opacity-70 overflow-hidden rounded-md shadow-md ${show}`}>
                                     <ul className="text-sm text-white">
                                         <AnchorLink href='#features'><li className="px-4 py-2 hover:bg-white hover:bg-opacity-20">Features</li></AnchorLink>
                                         <li className="px-4 py-2  hover:bg-white hover:bg-opacity-20 flex justify-between items-center" onClick={handeSubDropDown}>Read More<svg aria-hidden="true" className={`inline-block text-right w-4 h-4 ${subrotate}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg></li>
@@ -90,7 +93,7 @@ function ResNav() {
                                         <li className="border-t border-t-white px-4 py-2  hover:bg-white hover:bg-opacity-20">Sign out</li>
                                     </ul>
                                 </div>
-                                <div className={`absolute left-28 mx-1 mt-10 w-48 overflow-hidden rounded-md bg-black bg-opacity-40  shadow-md ${showsubdropdown}`}>
+                                <div className={`absolute left-28 mx-1 mt-10 w-48 overflow-hidden rounded-md bg-black bg-opacity-70  shadow-md ${showsubdropdown}`}>
                                     <ul className="text-sm text-white">
                                         <AnchorLink href='#contactus'><li className="px-4 py-2 hover:bg-white hover:bg-opacity-20">Contact Us</li></AnchorLink>
                                         <AnchorLink href='#moreservices'><li className="px-4 py-2 hover:bg-white hover:bg-opacity-20">More Services</li></AnchorLink>
@@ -102,6 +105,8 @@ function ResNav() {
 
                             <AnchorLink href='#aboutus'><li className="p-5 hover:text-white">About</li></AnchorLink>
                             <AnchorLink href='#services'><li className="p-5 hover:text-white">Services</li></AnchorLink>
+                            {props.isAuthenticated ? <AnchorLink href='#user'><li className="p-5 hover:text-white">{props.user.name}</li></AnchorLink> : null}
+                            <Logout></Logout>
 
                         </ul>
                     </div>
@@ -111,4 +116,16 @@ function ResNav() {
     );
 }
 
-export default ResNav;
+ResNav.propTypes = {
+    user: PropTypes.object,
+    isAuthenticated: PropTypes.bool
+}
+
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user,
+        isAuthenticated: state.auth.isAuthenticated,
+    }
+}
+
+export default connect(mapStateToProps)(ResNav)

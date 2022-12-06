@@ -4,7 +4,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
 import FullScreenVideo from "./components/FullScreen/FullSize";
 import MyList from "./components/Library/MyList";
+import store from './store';
+import { useEffect } from "react";
+import { loadUser } from "./actions/authActions";
+
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  });
   return (
     <BrowserRouter>
       <div className="App">

@@ -44,7 +44,7 @@ routes.post('/', (req, res) => {
     })
 })
 
-routes.get('/user', (req, res) => {
+routes.get('/user', auth, (req, res) => {
     findUserByID(req.user.id).then(user => {
         console.log(req.user.id)
         res.send(user)

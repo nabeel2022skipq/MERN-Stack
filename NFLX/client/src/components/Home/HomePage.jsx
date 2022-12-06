@@ -5,7 +5,12 @@ import Header from './Header';
 import { useEffect } from 'react';
 import MoviesMain from '../MoviesCategory/MoviesMain';
 import Footer from '../Footer';
-function HomePage() {
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
+import { loadUser } from '../../actions/authActions';
+function HomePage(props) {
+    const navigate = useNavigate();
 
     function playIntro() {
         var audio = new Audio(introSound);
@@ -17,8 +22,11 @@ function HomePage() {
     }
 
     useEffect(() => {
+        if (!props.isAuthenticated) {
+            navigate('/sign-up');
+        }
         playIntro()
-    })
+    }, [])
     return (
         <div>
             <Welcome
@@ -41,4 +49,20 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+HomePage.propTypes = {
+    isAuthenticated: PropTypes.bool,
+    token: PropTypes.string.isRequired,
+    loadUser: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = {
+    loadUser
+}
+function mapStateToProps(state) {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        token: state.auth.token
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

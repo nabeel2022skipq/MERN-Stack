@@ -47,7 +47,7 @@ export const loadUser = () => (dispatch, getState) => {
         payload: result.data
     }))
         .catch(err => {
-
+            console.log(err)
             dispatch(returnError(err.response.data, err.response.status, 'AUTH_FAIL'))
             dispatch({
                 type: "AUTH_FAIL"
@@ -63,13 +63,14 @@ export const tokenConfig = (getState) => {
     // Headers
     const config = {
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`
         }
     };
 
     // If token, add to headers
     if (token) {
-        config.headers['x-auth-token'] = token;
+
     }
 
     return config;
