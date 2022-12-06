@@ -24,7 +24,6 @@ async function findUser(user) {
         const doc = await client.db("ItemsList").collection("users").find({ "email": user["email"] }).toArray();
         if (doc.length > 0) {
             isalreadyPresent = true
-            console.log("User Registered.")
             return doc[0]
         }
         else {

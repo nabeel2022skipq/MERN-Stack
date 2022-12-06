@@ -1,7 +1,27 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
-function Signin() {
+import { Link, useNavigate } from 'react-router-dom';
+import { Alert } from 'reactstrap';
+import { connect } from 'react-redux'
+import { loginUser } from '../../actions/authActions'
+import PropTypes from 'prop-types'
+import { useEffect } from 'react';
+import { useState } from 'react';
+function Signin(props) {
+
+    const navigate = useNavigate();
+    const [emailValue, setemailValue] = useState("")
+    const [passwordValue, setpasswordValue] = useState("")
+    const [msgValue, setmsgValue] = useState(null)
+    const [tokenValue, settokenValue] = useState(null)
+
+    function loginexistingUser() {
+        let existinguser = { "email": emailValue, "password": passwordValue }
+        props.loginUser(existinguser)
+    }
+    if (props.isAuthenticated) {
+        navigate('/home');
+    }
 
     function validateFields(e) {
         let finalresult;
@@ -33,8 +53,25 @@ function Signin() {
 
         if (finalresult === true) {
             console.log("Form validated")
+            loginexistingUser();
         }
     }
+
+    useEffect(() => {
+        if (props.error.id === "LOGIN_FAIL") {
+            setmsgValue(props.error.msg.Error)
+        }
+        else {
+            setmsgValue(null)
+        }
+        if (props.token !== null) {
+            settokenValue(props.token)
+        }
+        else {
+            settokenValue(null)
+        }
+    })
+
     return (
         <React.Fragment>
             <div className='relative'>
@@ -51,18 +88,17 @@ function Signin() {
 
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className='bg-black px-10 space-y-7 py-7 bg-opacity-70 rounded-xl xl:mx-32'>
-
-
+                        {msgValue ? <Alert color='danger' className='text-white p-2 rounded-md bg-red-600 bg-opacity-70 text-center' >{`𝐄𝐫𝐫𝐨𝐫: ${msgValue}`}</Alert> : null}
                         {/* Heading */}
                         <div ><h2 className='text-white text-4xl font-bold'>Sign In</h2></div>
 
 
                         {/* Form */}
                         <div className='space-y-6'>
-                            <input type='text' id='signinemailText' placeholder='E-Mail' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                            <input type='text' id='signinemailText' placeholder='E-Mail' onChange={(e) => setemailValue(e.target.value)} className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
                             <small id="signinemailHelp" className="text-red-500 font-semibold"></small>
 
-                            <input type='text' id='signinpasswordText' placeholder='Password' className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
+                            <input type='text' id='signinpasswordText' placeholder='Password' onChange={(e) => setpasswordValue(e.target.value)} className='shadow-xl rounded-md py-4 px-3 w-full text-white' style={{ backgroundColor: "#333333" }}></input>
                             <small id="singinpasswordHelp" className="text-red-500 font-semibold"></small>
                         </div>
 
@@ -90,4 +126,21 @@ function Signin() {
     );
 }
 
-export default Signin;
+Signin.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    token: PropTypes.string
+}
+
+const mapDispatchToProps = {
+    loginUser
+}
+function mapStateToProps(state) {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        error: state.error,
+        token: state.auth.token
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Signin)

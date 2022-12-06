@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { moviesList } from '../../data/Moviesdata';
 import Slider from "react-slick";
 import { BsArrowsFullscreen } from 'react-icons/bs'

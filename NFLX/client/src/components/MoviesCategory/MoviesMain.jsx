@@ -3,7 +3,7 @@ import ActionMovies from './Action';
 import NewSeries from './NewSeries';
 import TopRated from './TopRated';
 import TrailerMovies from './Trailers';
-import UpcomingMovies from './Upcoming';
+// import UpcomingMovies from './Upcoming';
 function MoviesMain() {
     return (
         <React.Fragment>

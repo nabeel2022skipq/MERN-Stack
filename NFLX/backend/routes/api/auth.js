@@ -15,16 +15,16 @@ routes.post('/', (req, res) => {
     }
     findUser(req.body).then(user => {
         if (!user) {
-            return res.status(400).json({ "Error": "user does not registered!" })
+            return res.status(400).json({ "Error": "User not registered!" })
         }
         else {
             bcrypt.compare(req.body.password, user.password).then(isMatch => {
                 if (!isMatch) {
-                    res.status(400).json({ "Error": "Please enter correct credentials" })
+                    res.status(400).json({ "Error": "Please enter correct credentials!" })
                 }
                 jwt.sign(
                     { id: user._id },
-                    config.get("jwtSeceret"),
+                    config.get("JwtSeceret"),
                     (err, token) => {
                         if (err) throw err;
                         res.json({
@@ -33,7 +33,8 @@ routes.post('/', (req, res) => {
                                 "id": user._id,
                                 "name": user.name,
                                 "email": user.email,
-                                "password": user.password
+                                "password": user.password,
+                                "image": user.image
                             }
                         })
                     }
@@ -43,7 +44,7 @@ routes.post('/', (req, res) => {
     })
 })
 
-routes.get('/user', auth, (req, res) => {
+routes.get('/user', (req, res) => {
     findUserByID(req.user.id).then(user => {
         console.log(req.user.id)
         res.send(user)
