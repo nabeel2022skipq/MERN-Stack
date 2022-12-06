@@ -45,7 +45,7 @@ function VideoAbout(props) {
     }
     return (
         <>
-            <button type='button' className='shadow-xl rounded-md py-2 md:py-5 px-6 lg:px-10 text-black hover:transform hover:scale-110 hover:transition hover:ease-in-out hover:duration-700 duration-700' style={{ backgroundColor: "white" }} onClick={handleModalShow}>Description</button>
+            <button type='button' className=' hidden sm:block shadow-xl rounded-md py-2 md:py-5 px-6 lg:px-10 text-black hover:transform hover:scale-110 hover:transition hover:ease-in-out hover:duration-700 duration-700' style={{ backgroundColor: "white" }} onClick={handleModalShow}>Description</button>
 
             <MyVerticallyCenteredModal
                 show={modalShow}

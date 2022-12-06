@@ -1,14 +1,23 @@
 input[type="file" i]::-webkit-file-upload-button{
-  background: #DC2626;
+  background: #333333;
   margin-right: 12px;
   font-size: 15px;
-  border: 0px;
+  border: 1px solid #DC2626;
   border-radius: 5px;
   color: white;
-  padding: 10px;
+  padding: 5px 8px 5px 8px;
   cursor: pointer;
   }
   
+  input[type="file" i]::-webkit-file-upload-button:hover{
+    background: #DC2626;
+    margin-right: 12px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 8px 5px 8px;
+    cursor: pointer;
+    }
   input[type="file" i]{
     font-size: 12px;
     color: rgb(209 213 219);

@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 5000
 //Will direct the request to the following path
 const user = require('./routes/api/users')
 const auth = require('./routes/api/auth')
+const list = require('./routes/api/list')
 
 //Creating an express application
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors())
 
 app.use('/api/users', user)
 app.use('/api/users/auth', auth)
+app.use('/api/list', list)
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)

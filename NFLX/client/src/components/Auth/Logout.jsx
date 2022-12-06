@@ -9,7 +9,7 @@ function Logout(props) {
     }
     return (
         <React.Fragment>
-            {props.isAuthenticated ? <Link to='/sign-in'> <li className="p-5 hover:text-white" onClick={logoutexistingUser}>Logout</li></Link> : null}
+            {props.isAuthenticated ? <Link to='/sign-in'> <li className="border-t border-t-white px-4 py-2  hover:bg-white hover:bg-opacity-20" onClick={logoutexistingUser}>Logout</li></Link> : null}
         </React.Fragment>
     );
 }

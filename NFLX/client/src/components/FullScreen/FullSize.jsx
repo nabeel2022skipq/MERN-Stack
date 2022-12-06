@@ -1,17 +1,63 @@
 import React from 'react';
 import { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
+import { GoDiffAdded, GoDiffRemoved } from 'react-icons/go';
+import { connect } from 'react-redux';
+import PropTypes, { func } from 'prop-types'
 import { useLocation } from 'react-router-dom';
 import ResNav from '../Navbar/ResponsiveNav';
 import VideoAbout from './VideoAbout';
 
-function FullScreenVideo() {
+
+function FullScreenVideo(props) {
     const [isPlaying, setisPlaying] = useState(false)
+    const [isAdded, setisAdded] = useState(false)
     const location = useLocation();
     const { currentVideo } = location.state
 
     function handlePlay() {
         setisPlaying(true)
+    }
+
+    function handleAddToList() {
+        setisAdded(true)
+        let addMyNFXList = {
+            "email": props.user.email,
+            myFavouritesList: [
+                {
+                    "_ID": currentVideo._ID,
+                    title: currentVideo.title,
+                    "id": currentVideo.id,
+                    "category": currentVideo.category,
+                    "imgsrc": currentVideo.imgsrc,
+                    "rating": currentVideo.rating,
+                    "released": currentVideo.released,
+                    "gifsrc": currentVideo.gifsrc,
+                    "description": currentVideo.description
+                }
+            ]
+        }
+    }
+
+    function handleRemoveFromList() {
+        setisAdded(false)
+        let removeMyNFXList = {
+            "email": props.user.email,
+            myFavouritesList: [
+                {
+                    "_ID": currentVideo._ID,
+                    title: currentVideo.title,
+                    "id": currentVideo.id,
+                    "category": currentVideo.category,
+                    "imgsrc": currentVideo.imgsrc,
+                    "rating": currentVideo.rating,
+                    "released": currentVideo.released,
+                    "gifsrc": currentVideo.gifsrc,
+                    "description": currentVideo.description
+                }
+            ]
+        }
+
     }
 
     return (
@@ -56,6 +102,13 @@ function FullScreenVideo() {
                             <div className='flex space-x-4'>
                                 <button type='button' className='shadow-xl rounded-md py-2 md:py-5 px-6 lg:px-10 text-black hover:transform hover:scale-110 hover:transition hover:ease-in-out hover:duration-700 duration-700' style={{ backgroundColor: "white" }} onClick={handlePlay}><div className='flex items-center justify-center space-x-5'><FaPlay className='transform scale-150'></FaPlay><p>PLAY</p></div></button>
                                 <VideoAbout currvid={currentVideo}></VideoAbout>
+                                {isAdded ?
+
+                                    <button type='button' className='shadow-xl rounded-md py-2 md:py-5 px-6 lg:px-10 text-white border border-white hover:transform hover:scale-110 hover:transition hover:ease-in-out hover:duration-700 duration-700' style={{ backgroundColor: "transparent" }} onClick={handleRemoveFromList}><div className='flex items-center justify-center space-x-5'><GoDiffRemoved color='white' className='transform scale-150'></GoDiffRemoved><p>REMOVE</p></div></button>
+                                    :
+                                    <button type='button' className='shadow-xl rounded-md py-2 md:py-5 px-6 lg:px-10 text-white border border-white hover:transform hover:scale-110 hover:transition hover:ease-in-out hover:duration-700 duration-700' style={{ backgroundColor: "transparent" }} onClick={handleAddToList}><div className='flex items-center justify-center space-x-5'><GoDiffAdded color='white' className='transform scale-150'></GoDiffAdded><p>ADD</p></div></button>
+                                }
+
                             </div>
 
                         </div>
@@ -69,4 +122,17 @@ function FullScreenVideo() {
     );
 }
 
-export default FullScreenVideo;
+FullScreenVideo.propTypes = {
+    user: PropTypes.object,
+}
+const mapDispatchToProps = {
+
+
+}
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FullScreenVideo);
