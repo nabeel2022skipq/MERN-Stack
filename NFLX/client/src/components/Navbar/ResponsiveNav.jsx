@@ -63,7 +63,7 @@ function ResNav(props) {
                     <div>
                         {/* <h1 className="cursor-pointer text-2xl font-semibold uppercase">nabeel ahmad</h1> */}
                         {/* <Link to='/home' onClick={history.back}><BiArrowBack /></Link> */}
-                        <BiArrowBack onClick={handleBack}></BiArrowBack>
+                        <BiArrowBack className='cursor-pointer' onClick={handleBack}></BiArrowBack>
                     </div>
                     <div className='py-4 px-5 md:hidden'>
                         <GiIcons.GiHamburgerMenu className='text-3xl transform hover:scale-125 transition ease-in-out duration-300 cursor-pointer' onClick={handleShow}></GiIcons.GiHamburgerMenu>
@@ -82,7 +82,7 @@ function ResNav(props) {
                     </div>
                     <div className='hidden md:block'>
                         <ul className="flex cursor-pointer">
-                            <Link to><li className="p-5 hover:text-white">Home</li></Link>
+                            <Link to='/home'><li className="p-5 hover:text-white">Home</li></Link>
                             <div className="relative">
                                 <li className="py-5 px-3 hover:text-white" onClick={handeDropDown}>Profile<svg className={`inline-block w-4 h-4 ${rotate}`} aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg></li>
                                 <div className={`absolute right-0 mt-1 w-48 bg-black bg-opacity-70 overflow-hidden rounded-md shadow-md ${show}`}>
