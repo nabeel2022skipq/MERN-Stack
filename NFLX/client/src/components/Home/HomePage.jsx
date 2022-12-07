@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
 import { loadUser } from '../../actions/authActions';
-import { getFavourites } from '../../actions/myListActions';
+import { getFavourites, toggleFirstRender } from '../../actions/myListActions';
 
 function HomePage(props) {
     const navigate = useNavigate();
@@ -27,22 +27,28 @@ function HomePage(props) {
         if (!props.token) {
             navigate('/sign-up');
         }
-        playIntro()
+        if (props.firstRender) {
+            playIntro()
+        }
         props.getFavourites();
+        return () => {
+            props.toggleFirstRender();
+        }
     }, [])
     return (
         <div>
-            <Welcome
-                loopDuration={4000}
-                data={[
-                    {
-                        image: require('./Images/applogo.png'),
-                        imageAnimation: 'zoomIn',
-                        backgroundColor: 'black',
-                        text: ''
-                    }
-                ]}
-            />
+            {props.firstRender ?
+                <Welcome
+                    loopDuration={4000}
+                    data={[
+                        {
+                            image: require('./Images/applogo.png'),
+                            imageAnimation: 'zoomIn',
+                            backgroundColor: 'black',
+                            text: ''
+                        }
+                    ]}
+                /> : null}
 
             <Header></Header>
             <br></br>
@@ -56,18 +62,22 @@ HomePage.propTypes = {
     isAuthenticated: PropTypes.bool,
     token: PropTypes.string.isRequired,
     loadUser: PropTypes.func.isRequired,
+    firstRender: PropTypes.bool,
     getFavourites: PropTypes.func.isRequired,
+    toggleFirstRender: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = {
     loadUser,
-    getFavourites
+    getFavourites,
+    toggleFirstRender
 }
 function mapStateToProps(state) {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         token: state.auth.token,
-        favourites: state.list.favourites
+        favourites: state.list.favourites,
+        firstRender: state.list.firstRender
     }
 }
 

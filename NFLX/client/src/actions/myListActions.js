@@ -23,3 +23,9 @@ export const RemoveFromFavourites = (item) => dispatch => {
         payload: item
     }))
 }
+
+export const toggleFirstRender = () => {
+    return {
+        type: "RENDERED"
+    }
+}

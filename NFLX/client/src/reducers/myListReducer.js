@@ -1,5 +1,6 @@
 const initial_state = {
     favourites: [],
+    firstRender: true
 }
 
 export default function (state = initial_state, action) {
@@ -33,6 +34,13 @@ export default function (state = initial_state, action) {
             return {
                 ...state,
                 favourites: state.favourites
+            }
+
+        case "RENDERED":
+            return {
+                ...state,
+                firstRender: false
+
             }
 
         default:

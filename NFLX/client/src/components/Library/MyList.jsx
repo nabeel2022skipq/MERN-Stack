@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes, { func } from 'prop-types'
 import { getFavourites } from '../../actions/myListActions';
 import { useEffect } from 'react';
+import NothingtoShow from '../Empty/Nothing';
 
 function MyList(props) {
     let favsMovies
@@ -27,7 +28,8 @@ function MyList(props) {
         <React.Fragment>
             <ResNav></ResNav>
             <div>
-                <div className='mb-5' style={{ borderLeft: "15px solid #FF0000" }}><p className='text-2xl text-white px-10 py-5 font-extrabold'>My List</p></div>
+                <div className='mb-5' style={{ borderLeft: "15px solid #FF0000" }}><p className='text-2xl text-white px-10 py-5 font-extrabold'>My List </p></div>
+                {favsMovies.length === 0 ? <NothingtoShow></NothingtoShow> : null}
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
                     {favsMovies.map(m => (
                         <div>
