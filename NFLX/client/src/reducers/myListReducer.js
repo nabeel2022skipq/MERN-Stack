@@ -27,7 +27,7 @@ export default function (state = initial_state, action) {
             let docs = state.favourites.filter(l => l.email === action.payload.email)
             if (docs.length > 0) {
                 let FavsListIndex = state.favourites.indexOf(docs[0])
-                let idx = state.favourites[FavsListIndex].myFavouritesList.indexOf(action.payload.myFavouritesList[0])
+                let idx = state.favourites[FavsListIndex].myFavouritesList.findIndex(x => x._ID === action.payload.myFavouritesList[0]._ID)
                 state.favourites[FavsListIndex].myFavouritesList.splice(idx, 1)
             }
             return {

@@ -4,7 +4,11 @@ import ResNav from '../Navbar/ResponsiveNav'
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes, { func } from 'prop-types'
+import { getFavourites } from '../../actions/myListActions';
+import { useEffect } from 'react';
+
 function MyList(props) {
+    let favsMovies
     function handleMouseOver(m, gifsrc) {
         document.getElementById(`img${m}`).src = gifsrc
     }
@@ -13,12 +17,17 @@ function MyList(props) {
     }
 
     let cur_user = props.favourites.filter(l => l.email === props.user.email)
-    let favsMovies = cur_user[0].myFavouritesList
+    if (cur_user.length > 0) {
+        favsMovies = cur_user[0].myFavouritesList
+    }
+    useEffect(() => {
+        props.getFavourites();
+    }, [])
     return (
         <React.Fragment>
             <ResNav></ResNav>
             <div>
-                <div><h1 className='text-white p-5 text-3xl font-semibold'>My List</h1></div>
+                <div className='mb-5' style={{ borderLeft: "15px solid #FF0000" }}><p className='text-2xl text-white px-10 py-5 font-extrabold'>My List</p></div>
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
                     {favsMovies.map(m => (
                         <div>
@@ -50,6 +59,11 @@ function MyList(props) {
 MyList.propTypes = {
     user: PropTypes.object,
     favourites: PropTypes.object,
+    getFavourites: PropTypes.func
+}
+
+const mapDispatchToProps = {
+    getFavourites
 }
 
 function mapStateToProps(state) {
@@ -59,4 +73,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(MyList);
+export default connect(mapStateToProps, mapDispatchToProps)(MyList);
