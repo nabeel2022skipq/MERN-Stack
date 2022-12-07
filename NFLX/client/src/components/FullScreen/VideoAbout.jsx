@@ -16,7 +16,7 @@ function MyVerticallyCenteredModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
         >
             <Modal.Header className='px-10 py-7'>
-                <Modal.Title id="contained-modal-title-vcenter" className='text-gray-200 text-lg lg:text-4xl font-bold font-serif'>
+                <Modal.Title id="contained-modal-title-vcenter" className='text-black text-lg lg:text-4xl font-bold font-serif' style={{ WebkitTextStroke: "0.5px white" }}>
                     {props.currvideo.title}
                     <hr className='mt-1 lg:mt-4'></hr>
                     <p className='hidden lg:block text-sm font-light pt-3 font-mono'>Release Date: {props.currvideo.released}</p>
@@ -24,10 +24,10 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Header>
             <Modal.Body className='px-10 space-y-3'>
                 <h5 className='text-gray-200 font-thin lg:font-semibold font-serif'>Genre: {props.currvideo.category}</h5>
-                <p className='text-white lg:text-justify'>{props.currvideo.description}</p>
+                <p className='text-black lg:text-justify'>{props.currvideo.description}</p>
             </Modal.Body>
             <Modal.Footer className='px-10 py-5 lg:py-7'>
-                <Button className='shadow-xl rounded-md py-1 md:py-2 px-3 lg:px-5 text-gray-700 border bg-gray-200 hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700' onClick={handleClose}>Close</Button>
+                <Button className='shadow-xl rounded-md py-1 md:py-2 px-3 lg:px-5 border bg-transparent text-white hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700' onClick={handleClose}>Close</Button>
             </Modal.Footer>
         </Modal>
     );

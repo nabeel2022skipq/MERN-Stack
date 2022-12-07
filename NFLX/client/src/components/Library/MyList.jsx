@@ -4,22 +4,49 @@ import ResNav from '../Navbar/ResponsiveNav'
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes, { func } from 'prop-types'
-import { getFavourites } from '../../actions/myListActions';
+import { getFavourites, RemoveFromFavourites } from '../../actions/myListActions';
 import { useEffect } from 'react';
 import NothingtoShow from '../Empty/Nothing';
+import { MdFullscreen } from 'react-icons/md'
+import { Link } from 'react-router-dom';
 
 function MyList(props) {
     let favsMovies
     function handleMouseOver(m, gifsrc) {
         document.getElementById(`img${m}`).src = gifsrc
+        document.getElementById(m).classList.remove("hidden")
+        document.getElementById(m).classList.add("block")
     }
     function handleMouseLeave(m, imgsrc) {
         document.getElementById(`img${m}`).src = imgsrc
+        document.getElementById(m).classList.add("hidden")
+        document.getElementById(m).classList.remove("block")
     }
 
-    let cur_user = props.favourites.filter(l => l.email === props.user.email)
+    let cur_user = props.favourites.favourites.filter(l => l.email === props.user.email)
     if (cur_user.length > 0) {
         favsMovies = cur_user[0].myFavouritesList
+    }
+
+    function handleRemoveFromList(m) {
+        let removeMyNFXList = {
+            "email": props.user.email,
+            myFavouritesList: [
+                {
+                    "_ID": m._ID,
+                    title: m.title,
+                    "id": m.id,
+                    "category": m.category,
+                    "imgsrc": m.imgsrc,
+                    "rating": m.rating,
+                    "released": m.released,
+                    "gifsrc": m.gifsrc,
+                    "description": m.description
+                }
+            ]
+        }
+        props.RemoveFromFavourites(removeMyNFXList)
+        console.log(props.favourites)
     }
     useEffect(() => {
         props.getFavourites();
@@ -33,9 +60,10 @@ function MyList(props) {
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
                     {favsMovies.map(m => (
                         <div>
-                            <div className='text-white rounded-lg overflow-hidden cursor-pointer'>
+                            <div className='text-white rounded-lg overflow-hidden cursor-pointer relative' onMouseOver={() => handleMouseOver(m._ID, m.gifsrc)} onMouseLeave={() => handleMouseLeave(m._ID, m.imgsrc)}>
                                 <div>
-                                    <img id={`img${m._ID}`} src={m.imgsrc} className='w-full h-64 hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700' onMouseOver={() => handleMouseOver(m._ID, m.gifsrc)} onMouseLeave={() => handleMouseLeave(m._ID, m.imgsrc)}></img>
+                                    <img id={`img${m._ID}`} src={m.imgsrc} className='w-full h-64 hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700'></img>
+                                    <Link to="/full-screen" state={{ currentVideo: m }}><button className='absolute top-52 right-4 hover:animate-ping select-none cursor-pointer'><MdFullscreen size={35} style={{ fontWeight: 'bold' }}></MdFullscreen></button></Link>
                                 </div>
                                 <div>
                                     <div>
@@ -49,6 +77,9 @@ function MyList(props) {
                                         <small className='text-gray-400'>{`${Math.ceil((Math.random()) * 10)}.${Math.ceil((Math.random()) * 10)}M Views - ${Math.ceil((Math.random()) * 10)} weeks ago`}</small>
                                     </div>
                                 </div>
+                                <div className='bg-black bg-opacity-70 absolute top-1 right-2 rounded-md hidden' id={m._ID} onClick={() => handleRemoveFromList(m)}>
+                                    <p className='p-2 text-gray-300'>Remove from List</p>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -61,17 +92,19 @@ function MyList(props) {
 MyList.propTypes = {
     user: PropTypes.object,
     favourites: PropTypes.object,
-    getFavourites: PropTypes.func
+    getFavourites: PropTypes.func,
+    RemoveFromFavourites: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = {
-    getFavourites
+    getFavourites,
+    RemoveFromFavourites
 }
 
 function mapStateToProps(state) {
     return {
         user: state.auth.user,
-        favourites: state.list.favourites
+        favourites: state.list
     }
 }
 
