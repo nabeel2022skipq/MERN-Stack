@@ -7,6 +7,10 @@ import PropTypes, { func } from 'prop-types'
 import { useLocation } from 'react-router-dom';
 import ResNav from '../Navbar/ResponsiveNav';
 import VideoAbout from './VideoAbout';
+import { AddToFavourites, getFavourites, RemoveFromFavourites } from '../../actions/myListActions';
+import { useEffect } from 'react';
+
+
 
 
 function FullScreenVideo(props) {
@@ -14,6 +18,11 @@ function FullScreenVideo(props) {
     const [isAdded, setisAdded] = useState(false)
     const location = useLocation();
     const { currentVideo } = location.state
+
+
+
+
+
 
     function handlePlay() {
         setisPlaying(true)
@@ -37,6 +46,7 @@ function FullScreenVideo(props) {
                 }
             ]
         }
+        props.AddToFavourites(addMyNFXList);
     }
 
     function handleRemoveFromList() {
@@ -57,8 +67,23 @@ function FullScreenVideo(props) {
                 }
             ]
         }
-
+        props.RemoveFromFavourites(removeMyNFXList)
     }
+
+    useEffect(() => {
+        let myList = props.favourites.filter(l => l.email === props.user.email)
+        if (myList.length > 0) {
+            let curr_mov = myList[0].myFavouritesList.filter(m => m._ID === currentVideo._ID)
+            console.log(curr_mov)
+            if (curr_mov[0]) {
+                setisAdded(true)
+            }
+            else {
+                setisAdded(false)
+            }
+        }
+
+    }, [])
 
     return (
         <React.Fragment>
@@ -124,14 +149,20 @@ function FullScreenVideo(props) {
 
 FullScreenVideo.propTypes = {
     user: PropTypes.object,
+    favourites: PropTypes.object,
+    getFavourites: PropTypes.func.isRequired,
+    AddToFavourites: PropTypes.func.isRequired,
+    RemoveFromFavourites: PropTypes.func.isRequired,
 }
 const mapDispatchToProps = {
-
-
+    AddToFavourites,
+    getFavourites,
+    RemoveFromFavourites
 }
 function mapStateToProps(state) {
     return {
-        user: state.auth.user
+        user: state.auth.user,
+        favourites: state.list.favourites
     }
 }
 

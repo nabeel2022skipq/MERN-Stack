@@ -7,6 +7,7 @@ import MyList from "./components/Library/MyList";
 import store from './store';
 import { useEffect } from "react";
 import { loadUser } from "./actions/authActions";
+import { getFavourites } from "./actions/myListActions";
 
 function App() {
   useEffect(() => {

@@ -152,7 +152,7 @@ const mapDispatchToProps = {
 function mapStateToProps(state) {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        error: state.error
+        error: state.error,
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

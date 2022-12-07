@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
 import { loadUser } from '../../actions/authActions';
+import { getFavourites } from '../../actions/myListActions';
+
 function HomePage(props) {
     const navigate = useNavigate();
 
@@ -22,10 +24,11 @@ function HomePage(props) {
     }
 
     useEffect(() => {
-        if (!props.isAuthenticated) {
+        if (!props.token) {
             navigate('/sign-up');
         }
         playIntro()
+        props.getFavourites();
     }, [])
     return (
         <div>
@@ -52,16 +55,19 @@ function HomePage(props) {
 HomePage.propTypes = {
     isAuthenticated: PropTypes.bool,
     token: PropTypes.string.isRequired,
-    loadUser: PropTypes.func.isRequired
+    loadUser: PropTypes.func.isRequired,
+    getFavourites: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = {
-    loadUser
+    loadUser,
+    getFavourites
 }
 function mapStateToProps(state) {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        token: state.auth.token
+        token: state.auth.token,
+        favourites: state.list.favourites
     }
 }
 

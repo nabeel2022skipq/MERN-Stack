@@ -2,20 +2,25 @@ import { GoVerified } from 'react-icons/go'
 import { moviesList } from '../../data/Moviesdata'
 import ResNav from '../Navbar/ResponsiveNav'
 import React from 'react';
-function MyList() {
+import { connect } from 'react-redux';
+import PropTypes, { func } from 'prop-types'
+function MyList(props) {
     function handleMouseOver(m, gifsrc) {
         document.getElementById(`img${m}`).src = gifsrc
     }
     function handleMouseLeave(m, imgsrc) {
         document.getElementById(`img${m}`).src = imgsrc
     }
+
+    let cur_user = props.favourites.filter(l => l.email === props.user.email)
+    let favsMovies = cur_user[0].myFavouritesList
     return (
         <React.Fragment>
             <ResNav></ResNav>
             <div>
                 <div><h1 className='text-white p-5 text-3xl font-semibold'>My List</h1></div>
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
-                    {moviesList.map(m => (
+                    {favsMovies.map(m => (
                         <div>
                             <div className='text-white rounded-lg overflow-hidden cursor-pointer'>
                                 <div>
@@ -42,4 +47,16 @@ function MyList() {
     );
 }
 
-export default MyList;
+MyList.propTypes = {
+    user: PropTypes.object,
+    favourites: PropTypes.object,
+}
+
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user,
+        favourites: state.list.favourites
+    }
+}
+
+export default connect(mapStateToProps)(MyList);
