@@ -9,7 +9,7 @@ function SubServices() {
                     <Fade cascade damping={0.1} triggerOnce>
                         <div className='rounded-md shadow-2xl overflow-hidden transform hover:scale-105 transition ease-in-out duration-700'>
                             <div className='relative'>
-                                <img src='https://www.sykes.com/philippines/wp-content/uploads/2021/05/Work-From-Home-Jobs-5.png'></img>
+                                <img src='https://www.cxtoday.com/wp-content/uploads/2022/03/work-from-home-quotes-1280x720.jpg'></img>
                                 <div>
                                     <div className='absolute bottom-3 left-3 right-3 bg-white bg-opacity-25 hover:bg-opacity-40 hover:border-b-2 border-gray-900 hover:transition ease-in-out duration-500 shadow-md rounded-lg space-y-6 p-5'>
                                         <div><h1 className='text-center text-gray-900 font-serif uppercase text-3xl font-extrabold'>Lorem Ipsum</h1></div>
@@ -32,7 +32,7 @@ function SubServices() {
                         </div>
                         <div className='rounded-md shadow-2xl overflow-hidden transform hover:scale-105 transition ease-in-out duration-700'>
                             <div className='relative'>
-                                <img src='https://hrmcdn-13a1c.kxcdn.com/images/hr-sg/content-images/priya-june-2020-patrick-tay-work-from-home-lead-istock.jpg'></img>
+                                <img src='https://www.cxtoday.com/wp-content/uploads/2022/03/work-from-home-quotes-1280x720.jpg'></img>
 
                                 <div>
                                     <div className='absolute bottom-3 left-3 right-3 bg-white bg-opacity-25 hover:bg-opacity-40 hover:border-b-2 border-gray-900 hover:transition ease-in-out duration-500 shadow-md rounded-lg space-y-6 p-5'>
@@ -44,7 +44,7 @@ function SubServices() {
                         </div>
                         <div className='rounded-md shadow-2xl overflow-hidden transform hover:scale-105 transition ease-in-out duration-700'>
                             <div className='relative'>
-                                <img src='https://www.sykes.com/philippines/wp-content/uploads/2021/05/Work-From-Home-Jobs-5.png'></img>
+                                <img src='https://www.cxtoday.com/wp-content/uploads/2022/03/work-from-home-quotes-1280x720.jpg'></img>
                                 <div>
                                     <div className='absolute bottom-3 left-3 right-3 bg-white bg-opacity-25 hover:bg-opacity-40 hover:border-b-2 border-gray-900 hover:transition ease-in-out duration-500 shadow-md rounded-lg space-y-6 p-5'>
                                         <div><h1 className='text-center text-gray-900 font-serif uppercase text-3xl font-extrabold'>Lorem Ipsum</h1></div>

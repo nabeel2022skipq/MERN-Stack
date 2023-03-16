@@ -23,10 +23,6 @@ function MyList(props) {
         document.getElementById(m).classList.remove("block")
     }
 
-    let cur_user = props.favourites.favourites.filter(l => l.email === props.user.email)
-    if (cur_user.length > 0) {
-        favsMovies = cur_user[0].myFavouritesList
-    }
 
     function handleRemoveFromList(m) {
         let removeMyNFXList = {
@@ -55,34 +51,35 @@ function MyList(props) {
         <React.Fragment>
             <div>
                 <div className='mb-5 mt-16' style={{ borderLeft: "15px solid #FF0000" }}><p className='text-2xl text-white px-10 py-5 font-extrabold'>My List </p></div>
-                {favsMovies.length === 0 ? <NothingtoShow></NothingtoShow> : null}
-                <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
-                    {favsMovies.map(m => (
-                        <div>
-                            <div className='text-white rounded-lg overflow-hidden cursor-pointer relative' onMouseOver={() => handleMouseOver(m._ID, m.gifsrc)} onMouseLeave={() => handleMouseLeave(m._ID, m.imgsrc)}>
-                                <div>
-                                    <img id={`img${m._ID}`} src={m.imgsrc} className='w-full h-64 hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700'></img>
-                                    <Link to="/full-screen" state={{ currentVideo: m }}><button className='absolute top-52 right-4 hover:animate-ping select-none cursor-pointer'><MdFullscreen size={35} style={{ fontWeight: 'bold' }}></MdFullscreen></button></Link>
-                                </div>
-                                <div>
+                {props.favourites.favourites.filter(l => l.email === props.user.email).length === 0 ? <NothingtoShow></NothingtoShow> :
+                    <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 px-5'>
+                        {props.favourites.favourites.filter(l => l.email === props.user.email)[0].myFavouritesList.map(m => (
+                            <div>
+                                <div className='text-white rounded-lg overflow-hidden cursor-pointer relative' onMouseOver={() => handleMouseOver(m._ID, m.gifsrc)} onMouseLeave={() => handleMouseLeave(m._ID, m.imgsrc)}>
                                     <div>
-                                        <p className='text-lg mt-2'>{m.title}</p>
+                                        <img id={`img${m._ID}`} src={m.imgsrc} className='w-full h-64 hover:transform hover:scale-105 hover:transition hover:ease-in-out hover:duration-700 duration-700'></img>
+                                        <Link to="/full-screen" state={{ currentVideo: m }}><button className='absolute top-52 right-4 hover:animate-ping select-none cursor-pointer'><MdFullscreen size={35} style={{ fontWeight: 'bold' }}></MdFullscreen></button></Link>
                                     </div>
                                     <div>
-                                        <p className=' text-gray-400 inline-block'>Netflix</p>
-                                        <GoVerified className='inline-block ml-2' color='white'></GoVerified>
+                                        <div>
+                                            <p className='text-lg mt-2'>{m.title}</p>
+                                        </div>
+                                        <div>
+                                            <p className=' text-gray-400 inline-block'>Netflix</p>
+                                            <GoVerified className='inline-block ml-2' color='white'></GoVerified>
+                                        </div>
+                                        <div>
+                                            <small className='text-gray-400'>{`${Math.ceil((Math.random()) * 10)}.${Math.ceil((Math.random()) * 10)}M Views - ${Math.ceil((Math.random()) * 10)} weeks ago`}</small>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <small className='text-gray-400'>{`${Math.ceil((Math.random()) * 10)}.${Math.ceil((Math.random()) * 10)}M Views - ${Math.ceil((Math.random()) * 10)} weeks ago`}</small>
+                                    <div className='bg-black bg-opacity-70 absolute top-1 right-2 rounded-md hidden' id={m._ID} onClick={() => handleRemoveFromList(m)}>
+                                        <p className='p-2 text-gray-300'>Remove from List</p>
                                     </div>
-                                </div>
-                                <div className='bg-black bg-opacity-70 absolute top-1 right-2 rounded-md hidden' id={m._ID} onClick={() => handleRemoveFromList(m)}>
-                                    <p className='p-2 text-gray-300'>Remove from List</p>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                }
                 <div className='absolute w-full top-0 left-0'><ResNav></ResNav></div>
             </div>
         </React.Fragment>

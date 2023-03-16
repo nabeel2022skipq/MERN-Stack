@@ -1,7 +1,7 @@
 import axios from "axios"
 import { returnError } from "./errorActions";
 const api = axios.create({
-    baseURL: "http://localhost:5000/api/users"
+    baseURL: "https://ntflx.herokuapp.com/api/users"
 });
 
 export const registerUser = (user) => async dispatch => {

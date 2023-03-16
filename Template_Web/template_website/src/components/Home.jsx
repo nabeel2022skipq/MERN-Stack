@@ -24,13 +24,13 @@ function Home() {
             <ResNav></ResNav>
             <Header></Header>
             <AboutUs></AboutUs>
-            <Feedback></Feedback>
+            {/* <Feedback></Feedback> */}
             <Services></Services>
-            <Fade><SubServices></SubServices></Fade>
-            <Features></Features>
+            {/* <Fade><SubServices></SubServices></Fade> */}
+            {/* <Features></Features> */}
             <Slide triggerOnce><Team></Team></Slide>
             <Pricing></Pricing>
-            <FAQ></FAQ>
+            {/* <FAQ></FAQ> */}
             <ContactUs></ContactUs>
             <Footer></Footer>
         </React.Fragment>
