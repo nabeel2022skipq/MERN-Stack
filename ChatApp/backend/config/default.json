@@ -1,0 +1,4 @@
+{
+    "MONGO_URI": "mongodb+srv://nabeelahmd:nabeelahmd@cluster0.o9ctdcg.mongodb.net/ChatAppDB?retryWrites=true&w=majority",
+    "JwtSeceret": "sl_myJWTSeceret1"
+}
